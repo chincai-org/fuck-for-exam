@@ -1,0 +1,43 @@
+[
+    {
+        "route": "zh",
+        "title": "中文",
+        "childs": [
+            {
+                "route": "f4",
+                "title": "Form 4",
+                "childs": [
+                    {
+                        "route": "sej",
+                        "title": "Sejarah",
+                        "childs": [
+                            {
+                                "route": "1",
+                                "title": "Bab 1: Warisan Negara Bangsa",
+                                "childs": [
+                                    {
+                                        "route": "1",
+                                        "title": "1.1 Latar Belakang Negara Bangsa Sebelum Kedatangan Barat",
+                                        "childs": [
+                                            {
+                                                "route": "1",
+                                                "title": "Level 1: vocab", 
+                                                "childs": [
+                                                    {
+                                                        "questionType": "vocab",
+                                                        "answerType": "objective",
+                                                        "question": "Wilayah"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
