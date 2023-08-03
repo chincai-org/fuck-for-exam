@@ -1,14 +1,5 @@
-<!-- <script lang="ts">
-    import { page } from "$app/stores";
+<script lang="ts">
+    import type { PageData } from "./$types";
 
-    console.log($page.data.test);
+    export let data: PageData;
 </script>
-
-{#each $page.data.babs as bab}
-    <a href={bab}>{bab}</a>
-    <br />
-
-    <p>{$page.data.test}</p>
-{/each} -->
-
-<main>hello</main>

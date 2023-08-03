@@ -8,11 +8,15 @@ const config = {
     preprocess: vitePreprocess(),
 
     kit: {
-        adapter: adapter()
+        adapter: adapter({
+            strict: false
+        })
     },
     package: {
         dir: "./vite"
-    }
+    },
+
+    strict: false
 };
 
 export default config;

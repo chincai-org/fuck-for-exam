@@ -1,19 +1,19 @@
 <script lang="ts">
+    import Buttons from "$lib/components/Buttons.svelte";
     import type { PageData } from "./$types";
-    import { page } from "$app/stores";
 
     export let data: PageData;
 
-    console.log(data);
-
-    console.log($page.data.test);
+    $: buttons = data.buttons;
+    $: button = buttons[0];
 </script>
 
 <main>
-    {#each data.buttons as button}
-        <a href={window.location.href + "/" + button.route}>{button.title}</a>
-        <br />
-    {/each}
+    {#if button.route}
+        <Buttons />
+    {:else}
+        <p>TODO questions</p>
+    {/if}
 
     <slot />
 </main>

@@ -16,8 +16,8 @@ export const load: any = (({ params }: any) => {
     console.log(buttons);
 
     console.log(`/${params.lang}`);
+
     return {
-        buttons: buttons,
-        test: 0
+        buttons: buttons
     };
 }) satisfies PageLoad;
