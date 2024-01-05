@@ -1,8 +1,16 @@
 <script lang="ts">
     import { page } from "$app/stores";
+    import { onMount } from "svelte";
+    import Button from "./Button.svelte";
+
+    export let buttons: any;
+
+    onMount(() => {
+        console.log("Hello");
+    });
 </script>
 
-{#each $page.data.buttons as button}
-    <a href={window.location.href + "/" + button.route}>{button.title}</a>
+{#each buttons as button}
+    <Button {button} />
     <br />
 {/each}
