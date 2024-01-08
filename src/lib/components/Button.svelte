@@ -1,5 +1,6 @@
 <script lang="ts">
     export let button: any;
+    export let clicked: (event: any) => void;
 </script>
 
-<a href={window.location.href + "/" + button.route}>{button.title}</a>
+<button on:click={clicked}>{button.title}</button>

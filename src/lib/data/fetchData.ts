@@ -1,24 +1,22 @@
 import bank from "./bank.json";
 import definitions from "./definitions.json";
+import type { Result } from "./types";
 
 const definitionsDict: { [key: string]: any } = definitions;
-
-interface Result {
-    route?: string;
-    title?: string;
-    childs?: Array<Result>;
-}
 
 export function getDefinition(lang: any, word: any) {
     return definitionsDict[lang][word];
 }
 
-export function findData(query: string | undefined, data: Array<Object> = bank) {
-    console.log(data, "xxx");
+export function findData(query: string | undefined, data: Array<Result | Object> = bank) {
+    console.log(data);
     console.log(query);
+
+    if (!query) return data as Array<Result>;
+
     let result: Result = data.find((item: any) => item.route === query) || {};
     console.log(result);
-    return result.childs;
+    return result.childs as Array<Result>;
 }
 
 export function recursiveFind(routeList: Array<string>, data: Array<Object> = bank) {
