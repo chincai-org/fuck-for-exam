@@ -7,7 +7,7 @@
     let routeList: Array<string> = [];
     $: console.log(routeList);
 
-    $: buttons = recursiveFind(routeList);
+    $: buttons = recursiveFind(JSON.parse(JSON.stringify(routeList)));
     console.log(buttons);
     $: button = buttons[0];
     console.log(button);
