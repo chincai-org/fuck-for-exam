@@ -4,6 +4,6 @@
         "answerType": "objective",
         "question": "Wilayah",
         "answer": "",
-        "choices": []
+        "choices": ["alpha", "beta", "gamma", "delta"]
     }
 }
