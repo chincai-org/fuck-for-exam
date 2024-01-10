@@ -1,40 +1,28 @@
 [
     {
-        "id": 1,
-        "route": "zh",
+        "id": "zh",
         "title": "中文",
         "childs": [
             {
-                "id": 1,
-                "route": "f4",
+                "id": "f4",
                 "title": "Form 4",
                 "childs": [
                     {
-                        "id": 1,
-                        "route": "sej",
+                        "id": "sej",
                         "title": "Sejarah",
                         "childs": [
                             {
-                                "id": 1,
-                                "route": "1",
+                                "id": "1",
                                 "title": "Bab 1: Warisan Negara Bangsa",
                                 "childs": [
                                     {
-                                        "id": 1,
-                                        "route": "1",
+                                        "id": "1",
                                         "title": "1.1 Latar Belakang Negara Bangsa Sebelum Kedatangan Barat",
                                         "childs": [
                                             {
-                                                "id": 1,
-                                                "route": "1",
+                                                "id": "1",
                                                 "title": "Level 1: vocab",
-                                                "childs": [
-                                                    {
-                                                        "questionType": "vocab",
-                                                        "answerType": "objective",
-                                                        "question": "Wilayah"
-                                                    }
-                                                ]
+                                                "childs": ["1"]
                                             }
                                         ]
                                     }
