@@ -1,6 +1,13 @@
 export interface Result {
-    route?: string;
-    title?: string;
-    childs?: Array<Result>;
-    id?: Number;
+    id: string;
+    title: string;
+    childs: Array<Result>;
+}
+
+export interface Question {
+    questionType: string;
+    answerType: string;
+    question: string;
+    answer: string;
+    choices: Array<string>;
 }

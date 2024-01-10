@@ -8,18 +8,19 @@ export function getDefinition(lang: any, word: any) {
     return definitionsDict[lang][word];
 }
 
-export function findData(query: string | undefined, data: Array<Result | Object> = bank) {
+export function findData(query: string | undefined, data: Array<Result | string | any> = bank) {
     console.log(data);
     console.log(query);
 
     if (!query) return data as Array<Result>;
 
-    let result: Result = data.find((item: any) => item.route === query) || {};
+    let result: Result = data.find((item: any) => item.id === query) || {};
     console.log(result);
-    return result.childs as Array<Result>;
+
+    return result.childs as Array<Result | string>;
 }
 
-export function recursiveFind(routeList: Array<string>, data: Array<Object> = bank) {
+export function recursiveFind(routeList: Array<string>, data: Array<Result | string | any> = bank) {
     console.log(routeList);
 
     let currentData = findData(routeList.shift(), data);
