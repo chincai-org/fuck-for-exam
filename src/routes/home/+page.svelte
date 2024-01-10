@@ -44,5 +44,5 @@
 
 <style lang="sass">
     main
-        background-color: black
+        background-color: green
 </style>
