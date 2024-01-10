@@ -43,11 +43,6 @@
     console.log(buttons);
 </script>
 
-<style lang="sass">
-    main
-        background-color: black
-</style>
-
 <main>
     {#if button.route}
         {#each buttons as button}
@@ -57,3 +52,8 @@
         <Question questions={question} />
     {/if}
 </main>
+
+<style lang="sass">
+    main
+        background-color: black
+</style>

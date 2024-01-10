@@ -27,7 +27,7 @@
                                             {
                                                 "id": 1,
                                                 "route": "1",
-                                                "title": "Level 1: vocab", 
+                                                "title": "Level 1: vocab",
                                                 "childs": [
                                                     {
                                                         "questionType": "vocab",
