@@ -43,6 +43,11 @@
     console.log(buttons);
 </script>
 
+<style lang="sass">
+    main
+        background-color: black
+</style>
+
 <main>
     {#if button.route}
         {#each buttons as button}
