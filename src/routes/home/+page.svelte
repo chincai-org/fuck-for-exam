@@ -33,21 +33,12 @@
 </script>
 
 <main>
-<<<<<<< HEAD
-    {#if button.route}
-        {#each buttons as button}
-            <Button {button} clicked={eventMapping[String(button.id)]} />
-        {/each}
-    {:else}
-        <Question questions={question} />
-=======
     {#if button.id}
         {#each buttons as realButtons}
             <Button {button} clicked={eventMapping[button.id]} />
         {/each}
     {:else}
         <Question questions={buttons} />
->>>>>>> 44ee973c611a4c1542f1c96cb835917939757cd2
     {/if}
 </main>
 
