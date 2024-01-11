@@ -18,7 +18,5 @@
 </script>
 
 <main>
-    {#if id}
-        <Button {title} {id} />
-    {/if}
+    <Button {title} {id} />
 </main>
