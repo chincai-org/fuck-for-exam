@@ -1,5 +1,6 @@
 import type { PageLoad } from "./$types";
 import { findData, recursiveFind } from "$lib/data/fetchData";
+import { error } from '@sveltejs/kit'
 
 export const load: any = (({ params }: any) => {
     console.log(window.location.href);
@@ -9,6 +10,12 @@ export const load: any = (({ params }: any) => {
     const routeList: Array<string> = rawRoutes.split("/");
     console.log(routeList);
     const buttons = recursiveFind(routeList);
+
+    if (!buttons) {
+        error(404, {
+			message: 'Not found'
+		});  
+    }
 
     console.log(buttons);
 
