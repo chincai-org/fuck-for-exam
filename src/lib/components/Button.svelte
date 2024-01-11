@@ -1,12 +1,12 @@
 <script lang="ts">
-    export let button: any;
-    export let clicked: (event: any) => void;
+    export let title: any;
+    export let id: any;
 </script>
 
-<button on:click={clicked}>{button.title}</button>
+<a data-sveltekit-reload href={window.location.href + "/" + id}>{title}</a>
 
 <style lang="sass">
-    button
+    a
         background-color: black
         color: white
 </style>
