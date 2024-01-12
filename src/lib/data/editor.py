@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLineEdit
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLineEdit, QLabel
 from json import load, dump
 
 class MainWindow(QWidget):
@@ -78,6 +78,8 @@ class MainWindow(QWidget):
         layout = QVBoxLayout(bank_page)
         buttons = []
 
+        layout.addWidget(QLabel(["Language", "Form", "Subject", "Bab", "Subbab", "Level"][len(history)], bank_page))
+
         for i, data in enumerate(datas):
             button = QPushButton(data["title"], bank_page)
             button.clicked.connect(lambda: self.bank_start(data["childs"], history + [i]))
@@ -114,7 +116,7 @@ class MainWindow(QWidget):
         button = QPushButton(item.text(), bank_page)
         button.clicked.connect(lambda: self.bank_start(data["childs"], history + [len(buttons)]))
         buttons.append(button)
-        layout.insertWidget(len(buttons) - 1, button)
+        layout.insertWidget(len(buttons), button)
         item.setText('')
 
 
