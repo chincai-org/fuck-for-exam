@@ -78,11 +78,11 @@ class MainWindow(QWidget):
         layout = QVBoxLayout(bank_page)
         buttons = []
 
-        layout.addWidget(QLabel(["Language", "Form", "Subject", "Bab", "Subbab", "Level"][len(history)], bank_page))
+        layout.addWidget(QLabel(["Language", "Form", "Subject", "Bab", "Subbab", "Level", "Questions"][len(history)], bank_page))
 
         for i, data in enumerate(datas):
             button = QPushButton(data["title"], bank_page)
-            button.clicked.connect(lambda: self.bank_start(data["childs"], history + [i]))
+            button.clicked.connect(lambda _, d=data["childs"], h=history + [i]: self.bank_start(d, h))
             layout.addWidget(button)
             buttons.append(button)
 
