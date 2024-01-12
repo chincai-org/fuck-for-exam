@@ -1,7 +1,7 @@
 [
     {
         "id": "zh",
-        "title": "中文",
+        "title": "\u4e2d\u6587",
         "childs": [
             {
                 "id": "f4",
@@ -22,7 +22,44 @@
                                             {
                                                 "id": "1",
                                                 "title": "Level 1: vocab",
-                                                "childs": ["1"]
+                                                "childs": [
+                                                    "1"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "2710",
+        "title": "English",
+        "childs": [
+            {
+                "id": "2711",
+                "title": "Form 2",
+                "childs": [
+                    {
+                        "id": "2712",
+                        "title": "Philosphy",
+                        "childs": [
+                            {
+                                "id": "2713",
+                                "title": "Chapter 1: The human mind",
+                                "childs": [
+                                    {
+                                        "id": "2714",
+                                        "title": "1.1 Thoughts",
+                                        "childs": [
+                                            {
+                                                "id": "2715",
+                                                "title": "Level 1: Basics",
+                                                "childs": []
                                             }
                                         ]
                                     }

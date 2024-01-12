@@ -7,7 +7,7 @@ class MainWindow(QWidget):
         super().__init__()
 
         self.load_data()
-        self.initUI()
+        self.init_ui()
 
 
     def load_data(self):
@@ -24,7 +24,17 @@ class MainWindow(QWidget):
         with open(file, 'w', encoding='utf-8') as f:
             dump(data, f, indent=4)
 
-    def initUI(self):
+    def load_id(self):
+        with open("uniq_id.txt", "r") as f:
+            id = int(f.read())
+
+        with open("uniq_id.txt", "w") as f:
+            f.write(str(id + 1))
+
+        return hex(id)[2:]
+
+
+    def init_ui(self):
         self.setWindowTitle('Bank Editor')
 
         self.stackedWidget = QStackedWidget(self)
@@ -78,7 +88,7 @@ class MainWindow(QWidget):
 
         new_item = QLineEdit(bank_page)
         new_item.setPlaceholderText('Create new item...')
-        new_item.returnPressed.connect(lambda: self.new_item(layout, buttons, new_item, bank_page, history.copy()))
+        new_item.returnPressed.connect(lambda: self.new_item(layout, buttons, new_item, bank_page, history.copy(), datas))
         layout.addWidget(new_item)
 
 
@@ -95,54 +105,35 @@ class MainWindow(QWidget):
         self.stackedWidget.removeWidget(self.pages.pop(self.stackedWidget.currentIndex()))
 
 
-    def new_item(self, layout, buttons, item: QLineEdit, bank_page, history):
-        datas = self.recursive_find(history.copy())
-        print(history)
-        datas.append({"title": item.text(), "childs": []})
+    def new_item(self, layout, buttons, item: QLineEdit, bank_page, history, datas):
+        datas.append({"id": self.load_id(), "title": item.text(), "childs": []})
+        data = datas[-1]
 
         self.dump_data(self.bank, 'bank.json')
 
         button = QPushButton(item.text(), bank_page)
-        button.clicked.connect(lambda: self.bank_start([], history + [len(buttons)]))
+        button.clicked.connect(lambda: self.bank_start(data["childs"], history + [len(buttons)]))
         buttons.append(button)
         layout.insertWidget(len(buttons) - 1, button)
         item.setText('')
 
 
 
-    def recursive_find(self, history, datas = None):
+    def recursive_find(self, history: list, datas = None):
         datas = datas or self.bank
 
         if len(history) == 0:
             return datas
 
-        return self.recursive_find(datas[history.pop(0)]["childs"], history)
+        print(history)
+        index = history.pop(0)
+        return self.recursive_find(history.copy(), datas[index]["childs"])
 
 
     def make_definition_btn(self):
         pass
 
 
-    def createPage(self, index):
-        page = QWidget()
-        layout = QVBoxLayout(page)
-
-        # Create buttons for the page
-        for i in range(3):
-            button = QPushButton(f'Page {index + 1} - Button {i + 1}', page)
-            button.clicked.connect(lambda _, idx=index, btn=i: self.onButtonClick(idx, btn))
-            layout.addWidget(button)
-
-        # Add "Back" button
-        back_button = QPushButton('Back', page)
-        back_button.clicked.connect(self.goBack)
-        layout.addWidget(back_button)
-
-        return page
-
-    def onButtonClick(self, pageIndex, buttonIndex):
-        print(f'Button {buttonIndex + 1} on Page {pageIndex + 1} clicked')
-        self.stackedWidget.setCurrentIndex(buttonIndex)
 
 
 if __name__ == '__main__':
