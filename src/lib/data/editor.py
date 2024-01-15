@@ -1,6 +1,10 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLineEdit, QLabel
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLineEdit, QLabel, QComboBox, QCheckBox
 from json import load, dump
+
+QUESTION_TYPES = ["vocab", "normal"]
+ANSWER_TYPES = ["objective", "subjective"]
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -15,10 +19,14 @@ class MainWindow(QWidget):
             self.bank = load(f)
 
         with open('questions.json', 'r', encoding='utf-8') as f:
-            self.question = load(f)
+            self.questions = load(f)
 
         with open('definitions.json', 'r', encoding='utf-8') as f:
             self.definition = load(f)
+
+
+    def get_question(self, id):
+        return self.questions[id]
 
     def dump_data(self, data, file):
         with open(file, 'w', encoding='utf-8') as f:
@@ -79,19 +87,25 @@ class MainWindow(QWidget):
         buttons = []
 
         layout.addWidget(QLabel(["Language", "Form", "Subject", "Bab", "Subbab", "Level", "Questions"][len(history)], bank_page))
+        if datas and not isinstance(datas[0], str):
+            for i, data in enumerate(datas):
+                button = QPushButton(data["title"], bank_page)
+                button.clicked.connect(lambda _, d=data["childs"], h=history + [i]: self.bank_start(d, h))
+                layout.addWidget(button)
+                buttons.append(button)
 
-        for i, data in enumerate(datas):
-            button = QPushButton(data["title"], bank_page)
-            button.clicked.connect(lambda _, d=data["childs"], h=history + [i]: self.bank_start(d, h))
-            layout.addWidget(button)
-            buttons.append(button)
+            # Create new item
 
-        # Create new item
+            new_item = QLineEdit(bank_page)
+            new_item.setPlaceholderText('Create new item...')
+            new_item.returnPressed.connect(lambda: self.new_item(layout, buttons, new_item, bank_page, history.copy(), datas))
+            layout.addWidget(new_item)
+        else:
+            for id, question in zip(datas, map(self.get_question, datas)):
+                button = QPushButton(question["name"], bank_page)
+                button.clicked.connect(lambda _, i=id, q=question: self.make_question_editor(i, q))
+                layout.addWidget(button)
 
-        new_item = QLineEdit(bank_page)
-        new_item.setPlaceholderText('Create new item...')
-        new_item.returnPressed.connect(lambda: self.new_item(layout, buttons, new_item, bank_page, history.copy(), datas))
-        layout.addWidget(new_item)
 
 
 
@@ -102,6 +116,67 @@ class MainWindow(QWidget):
         self.pages.append(bank_page)
         self.stackedWidget.addWidget(bank_page)
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+    def make_question_editor(self, id, question):
+        question_page = QWidget()
+        layout = QVBoxLayout(question_page)
+
+        layout.addWidget(QLabel(question["name"], question_page))
+
+        # Question type
+        layout.addWidget(QLabel("Question Type:"))
+
+        question_type = QComboBox(question_page)
+        question_type.addItems(QUESTION_TYPES)
+        question_type.setCurrentIndex(QUESTION_TYPES.index(question["questionType"]))
+        layout.addWidget(question_type)
+
+        # Answer type
+        layout.addWidget(QLabel("Answer Type:"))
+
+        answer_type = QComboBox(question_page)
+        answer_type.addItems(ANSWER_TYPES)
+        answer_type.setCurrentIndex(ANSWER_TYPES.index(question["answerType"]))
+        layout.addWidget(answer_type)
+
+        # Question
+        layout.addWidget(QLabel("Question:"))
+
+        actual_question = QLineEdit(question_page)
+        actual_question.setText(question["question"])
+        layout.addWidget(actual_question)
+
+        # Answer
+        layout.addWidget(QLabel("Answer:"))
+
+        actual_answer = QLineEdit(question_page)
+        actual_answer.setText(question["answer"])
+        layout.addWidget(actual_answer)
+
+        # Choices
+        if question["answerType"] == "objective":
+            self.make_choices(question_page, question, layout)
+
+        # Shuffle
+        layout.addWidget(QLabel("Shuffle:"))
+
+        shuffle = QCheckBox(question_page)
+        shuffle.setChecked(question["shuffle"])
+        layout.addWidget(shuffle)
+
+        self.pages.append(question_page)
+        self.stackedWidget.addWidget(question_page)
+        self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+
+    def make_choices(self, question_page, question, layout):
+        layout.addWidget(QLabel("Choices:"))
+
+        for choice in question["choices"]:
+            choice_widget = QLineEdit(question_page)
+            choice_widget.setText(choice)
+            layout.addWidget(choice_widget)
+
 
     def back(self):
         self.stackedWidget.removeWidget(self.pages.pop(self.stackedWidget.currentIndex()))
