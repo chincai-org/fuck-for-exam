@@ -3,10 +3,7 @@
     export let id: any;
 </script>
 
-<a href="{window.location.href}/{id}">{title}</a>
+<a href="{window.location.pathname}/{id}">{title}</a>
 
-<style lang="sass">
-    a
-        background-color: black
-        color: white
+<style lang="scss">
 </style>
