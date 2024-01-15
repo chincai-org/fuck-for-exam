@@ -1,14 +1,16 @@
 {
     "1": {
+        "name": "wilayah vocab question",
         "questionType": "vocab",
         "answerType": "objective",
         "question": "Wilayah",
-        "answer": "",
+        "answer": "$vocab",
         "choices": [
-            "never gonna give you up",
-            "never gonna let you down",
-            "never gonna go around",
-            "and desert you"
-        ]
+            "$rand",
+            "$rand",
+            "$rand",
+            "$actual"
+        ],
+        "shuffle": true
     }
 }
