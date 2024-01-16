@@ -2,10 +2,10 @@
 @use "typography" as *;
 @use "sizes" as *;
 
-$prefix: "kpds-";
+$prefix: "--";
 
 $active-theme: $light;
-$enable-media-query-dark-mode: false;
+$enable-media-query-dark-mode: true;
 
 // Contextual
 $color-text-default: $color-neutral-700;
@@ -82,12 +82,14 @@ $site-header-alignment: center;
 
 //navigation
 $navigation-color: $site-header-color;
-$navigation-color-hover: $color-primary-300;
-$navigation-font-size: $font-size-400;
-$navigation-gap: $size-9;
+$navigation-color-hover: $color-neutral-700;
+$navigation-font-size: $font-size-700;
+$navigation-gap: $size-5;
 $navigation-link-text-decoration: none;
 $navigation-font-family: $body-font-family;
 $navigation-font-weight: $body-font-weight;
+$navigation-display: grid;
+$navigation-user-select: none;
 
 // site footer
 $footer-background-color: $color-primary-300;

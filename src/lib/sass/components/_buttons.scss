@@ -16,7 +16,7 @@
     border-radius: $button-border-radius;
     transition: 275ms ease;
 
-    &[data-type="accent"] {
+    &[data-button="accent"] {
       background-color: $button-accent-background;
       color: $button-accent-color;
 
@@ -26,7 +26,7 @@
       }
     }
 
-    &[data-type="primary"] {
+    &[data-button="primary"] {
       background-color: $button-primary-background;
       color: $button-primary-color;
 

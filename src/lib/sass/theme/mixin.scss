@@ -22,7 +22,7 @@
         }
     }
 
-    @mixin change-default($list-style: none, $user-select: none, $text-decoration: none, $color: null) {
+    @mixin wanted-default($list-style: none, $user-select: none, $text-decoration: none, $color: null) {
         list-style: $list-style;
         user-select: $user-select;
         text-decoration: $text-decoration;
