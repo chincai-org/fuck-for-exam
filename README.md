@@ -29,13 +29,21 @@ Open command prompt, or any CLI will do. If you are in vscode you can do CTRL + 
 
 ## Step 2:
 
+Install library, run the following command:
+
+```sh
+pip install -r requirements.txt
+```
+
+## Step 3:
+
 Insert the following command
 
 ```sh
 cd src/lib/data
 ```
 
-## Step 3:
+## Step 4:
 
 Run the following command
 
