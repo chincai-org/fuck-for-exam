@@ -106,6 +106,11 @@ class MainWindow(QWidget):
                 button.clicked.connect(lambda _, i=id, q=question: self.make_question_editor(i, q))
                 layout.addWidget(button)
 
+            # Import existing questions
+            import_button = QPushButton('Import existing questions', bank_page)
+            import_button.clicked.connect(lambda: self.import_questions(datas))
+            layout.addWidget(import_button)
+
             # Create new item
             create_button = QPushButton('Create new question', bank_page)
             create_button.clicked.connect(lambda: self.new_question(datas))
@@ -119,6 +124,25 @@ class MainWindow(QWidget):
 
         self.pages.append(bank_page)
         self.stackedWidget.addWidget(bank_page)
+        self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+    def import_questions(self, datas):
+        import_page = QWidget()
+        layout = QVBoxLayout(import_page)
+
+        def manage_click(id):
+            datas.append(id)
+            self.dump_data(self.bank, "bank.json")
+
+            self.back()
+
+        for id, question in self.questions.items():
+            button = QPushButton(question["name"], import_page)
+            button.clicked.connect(lambda _, id=id: manage_click(id))
+            layout.addWidget(button)
+
+        self.pages.append(import_page)
+        self.stackedWidget.addWidget(import_page)
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
 
     def new_question(self, datas):
