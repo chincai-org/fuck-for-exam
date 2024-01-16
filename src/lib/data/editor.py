@@ -106,6 +106,15 @@ class MainWindow(QWidget):
                 button.clicked.connect(lambda _, i=id, q=question: self.make_question_editor(i, q))
                 layout.addWidget(button)
 
+            # Import existing questions
+            import_button = QPushButton('Import existing questions', bank_page)
+            import_button.clicked.connect(lambda: self.import_questions(datas))
+            layout.addWidget(import_button)
+
+            # Create new item
+            create_button = QPushButton('Create new question', bank_page)
+            create_button.clicked.connect(lambda: self.new_question(datas))
+            layout.addWidget(create_button)
 
 
 
@@ -117,11 +126,62 @@ class MainWindow(QWidget):
         self.stackedWidget.addWidget(bank_page)
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
 
+    def import_questions(self, datas):
+        import_page = QWidget()
+        layout = QVBoxLayout(import_page)
+
+        def manage_click(id):
+            datas.append(id)
+            self.dump_data(self.bank, "bank.json")
+
+            self.back()
+
+        for id, question in self.questions.items():
+            button = QPushButton(question["name"], import_page)
+            button.clicked.connect(lambda _, id=id: manage_click(id))
+            layout.addWidget(button)
+
+        self.pages.append(import_page)
+        self.stackedWidget.addWidget(import_page)
+        self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+    def new_question(self, datas):
+        id = self.load_id()
+        datas.append(id)
+        self.dump_data(self.bank, "bank.json")
+
+        self.questions[id] = {
+            "name": "Write a unique name that helps u to identify this question",
+            "questionType": "normal",
+            "answerType": "objective",
+            "question": "o sitelen e ijo pi sona ala lon ma ni",
+            "answer": "Skribu vian respondon ĉi tie",
+            "choices": [],
+            "shuffle": False
+        }
+
+        self.dump_data(self.questions, "questions.json")
+
+        self.make_question_editor(id, self.questions[id])
+
+
+
+    def edit_question(self, id, question):
+        self.questions[id] = question
+
+        self.dump_data(self.questions, "questions.json")
+
+    def change_question(self, question, attr, value):
+        question[attr] = value
+
     def make_question_editor(self, id, question):
         question_page = QWidget()
         layout = QVBoxLayout(question_page)
 
-        layout.addWidget(QLabel(question["name"], question_page))
+        question_name = QLineEdit(question_page)
+        question_name.setText(question["name"])
+        question_name.textChanged.connect(lambda: self.change_question(question, "name", question_name.text()))
+        layout.addWidget(question_name)
 
         # Question type
         layout.addWidget(QLabel("Question Type:"))
@@ -129,6 +189,7 @@ class MainWindow(QWidget):
         question_type = QComboBox(question_page)
         question_type.addItems(QUESTION_TYPES)
         question_type.setCurrentIndex(QUESTION_TYPES.index(question["questionType"]))
+        question_type.currentIndexChanged.connect(lambda index, q=question: self.change_question(q, "questionType", QUESTION_TYPES[index]))
         layout.addWidget(question_type)
 
         # Answer type
@@ -137,6 +198,7 @@ class MainWindow(QWidget):
         answer_type = QComboBox(question_page)
         answer_type.addItems(ANSWER_TYPES)
         answer_type.setCurrentIndex(ANSWER_TYPES.index(question["answerType"]))
+        answer_type.currentIndexChanged.connect(lambda index, q=question: self.change_question(q, "answerType", ANSWER_TYPES[index]))
         layout.addWidget(answer_type)
 
         # Question
@@ -144,6 +206,7 @@ class MainWindow(QWidget):
 
         actual_question = QLineEdit(question_page)
         actual_question.setText(question["question"])
+        actual_question.textChanged.connect(lambda: self.change_question(question, "question", actual_question.text()))
         layout.addWidget(actual_question)
 
         # Answer
@@ -151,6 +214,7 @@ class MainWindow(QWidget):
 
         actual_answer = QLineEdit(question_page)
         actual_answer.setText(question["answer"])
+        actual_answer.textChanged.connect(lambda: self.change_question(question, "answer", actual_answer.text()))
         layout.addWidget(actual_answer)
 
         # Choices
@@ -162,7 +226,19 @@ class MainWindow(QWidget):
 
         shuffle = QCheckBox(question_page)
         shuffle.setChecked(question["shuffle"])
+        shuffle.stateChanged.connect(lambda state, q=question: self.change_question(q, "shuffle", bool(state)))
         layout.addWidget(shuffle)
+
+        # Save
+        save = QPushButton("Save", question_page)
+        save.clicked.connect(lambda: self.edit_question(id, question))
+        layout.addWidget(save)
+
+        # Back
+        back = QPushButton("Back", question_page)
+        back.clicked.connect(self.back)
+        layout.addWidget(back)
+
 
         self.pages.append(question_page)
         self.stackedWidget.addWidget(question_page)
@@ -172,10 +248,14 @@ class MainWindow(QWidget):
     def make_choices(self, question_page, question, layout):
         layout.addWidget(QLabel("Choices:"))
 
-        for choice in question["choices"]:
+        for i, choice in enumerate(question["choices"]):
             choice_widget = QLineEdit(question_page)
             choice_widget.setText(choice)
+            choice_widget.textChanged.connect(lambda _, c=choice, i=i, q=question: self.change_choice(q["choices"], i, choice_widget.text()))
             layout.addWidget(choice_widget)
+
+    def change_choice(self, choice, index, value):
+        choice[index] = value
 
 
     def back(self):
@@ -193,8 +273,6 @@ class MainWindow(QWidget):
         buttons.append(button)
         layout.insertWidget(len(buttons), button)
         item.setText('')
-
-
 
     def recursive_find(self, history: list, datas = None):
         datas = datas or self.bank
