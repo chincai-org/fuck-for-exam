@@ -7,7 +7,7 @@
     import { onMount } from "svelte";
     import Button from "$lib/components/Button.svelte";
 
-    let title = "never gonna give you up";
+    let title = "why lang first";
     let id = "zh";
 </script>
 

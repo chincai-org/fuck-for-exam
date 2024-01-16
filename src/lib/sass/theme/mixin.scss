@@ -1,0 +1,30 @@
+@mixin before-after(
+        $locations: before,
+        $content: "",
+        $position: absolute,
+        $top: null,
+        $bottom: null,
+        $right: null,
+        $left: null
+    ) {
+        position: relative;
+
+        @each $location in $locations {
+            &::#{$location} {
+                content: $content;
+                position: $position;
+                top: $top;
+                bottom: $bottom;
+                right: $right;
+                left: $left;
+                @content;
+            }
+        }
+    }
+
+    @mixin change-default($list-style: none, $user-select: none, $text-decoration: none, $color: null) {
+        list-style: $list-style;
+        user-select: $user-select;
+        text-decoration: $text-decoration;
+        color: $color;
+    }
