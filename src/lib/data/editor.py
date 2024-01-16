@@ -106,6 +106,10 @@ class MainWindow(QWidget):
                 button.clicked.connect(lambda _, i=id, q=question: self.make_question_editor(i, q))
                 layout.addWidget(button)
 
+            # Create new item
+            create_button = QPushButton('Create new question', bank_page)
+            create_button.clicked.connect(lambda: self.new_question(datas))
+            layout.addWidget(create_button)
 
 
 
@@ -116,6 +120,27 @@ class MainWindow(QWidget):
         self.pages.append(bank_page)
         self.stackedWidget.addWidget(bank_page)
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+    def new_question(self, datas):
+        id = self.load_id()
+        datas.append(id)
+        self.dump_data(self.bank, "bank.json")
+
+        self.questions[id] = {
+            "name": "Write a unique name that helps u to identify this question",
+            "questionType": "normal",
+            "answerType": "objective",
+            "question": "o sitelen e ijo pi sona ala lon ma ni",
+            "answer": "Skribu vian respondon ĉi tie",
+            "choices": [],
+            "shuffle": False
+        }
+
+        self.dump_data(self.questions, "questions.json")
+
+        self.make_question_editor(id, self.questions[id])
+
+
 
     def edit_question(self, id, question):
         self.questions[id] = question
@@ -129,7 +154,10 @@ class MainWindow(QWidget):
         question_page = QWidget()
         layout = QVBoxLayout(question_page)
 
-        layout.addWidget(QLabel(question["name"], question_page))
+        question_name = QLineEdit(question_page)
+        question_name.setText(question["name"])
+        question_name.textChanged.connect(lambda: self.change_question(question, "name", question_name.text()))
+        layout.addWidget(question_name)
 
         # Question type
         layout.addWidget(QLabel("Question Type:"))
@@ -174,7 +202,7 @@ class MainWindow(QWidget):
 
         shuffle = QCheckBox(question_page)
         shuffle.setChecked(question["shuffle"])
-        shuffle.stateChanged.connect(lambda state, q=question: self.change_question(q, "shuffle", state))
+        shuffle.stateChanged.connect(lambda state, q=question: self.change_question(q, "shuffle", bool(state)))
         layout.addWidget(shuffle)
 
         # Save
@@ -221,8 +249,6 @@ class MainWindow(QWidget):
         buttons.append(button)
         layout.insertWidget(len(buttons), button)
         item.setText('')
-
-
 
     def recursive_find(self, history: list, datas = None):
         datas = datas or self.bank
