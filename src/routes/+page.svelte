@@ -1,24 +1,34 @@
 <script lang="ts">
-    import { collection, addDoc } from "firebase/firestore";
-    import { db } from "$lib/firebase/firebase";
-    import { getDefinition } from "$lib/data/fetchData";
+    import type { PageData } from "./$types";
 
-    let num = 0;
-    let route: string = "/";
-
-    async function add() {
-        await addDoc(collection(db, "test"), {
-            num: num
-        });
-        num++;
-    }
-
-    console.log(getDefinition("ZH", "wilayah"));
+    export let data: PageData;
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<button on:click={add}>Inserted {num} docs</button>
+<main class="min-height-100vh">
+    <div class="--text-center">
+        <h2 class="--heading-2">Welcome to</h2>
+        <h1 class="--heading-1">FUCK</h1>
+        <h3 class="--heading-3">where you get</h3>
+        <h3 class="--heading-3">
+            <span class="--clr-accent-400">F</span>ree
+            <span class="--clr-accent-400">U</span>nlimited
+            <span class="--clr-accent-400">C</span>omprehensive
+            <span class="--clr-accent-400">K</span>nowledge
+        </h3>
+        <div class="--even-columns">
+            <button class="--button" data-button="accent">Sign up</button>
+            <button class="--button" data-button="accent">Login</button>
+        </div>
+    </div>
+</main>
 
-<input type="text" bind:value={route} />
-<a href={route}>Go to route</a>
+<style>
+    .min-height-100vh {
+        min-height: 100vh;
+    }
+
+    main {
+        display: grid;
+        place-content: center;
+    }
+</style>
