@@ -174,7 +174,7 @@ class MainWindow(QWidget):
     def change_question(self, question, attr, value):
         question[attr] = value
 
-    def make_question_editor(self, id, question):
+    def make_question_editor(self, id, question: dict):
         question_page = QWidget()
         layout = QVBoxLayout(question_page)
 
@@ -234,6 +234,17 @@ class MainWindow(QWidget):
         save.clicked.connect(lambda: self.edit_question(id, question))
         layout.addWidget(save)
 
+        # Clone
+        clone = QPushButton("Clone question", question_page)
+        clone.clicked.connect(lambda: self.clone_question(question.copy()))
+        layout.addWidget(clone)
+
+        # # Delete
+        # delete = QPushButton("Delete question", question_page)
+        # delete.clicked.connect(lambda: self.delete_question(id))
+        # layout.addWidget(delete)
+
+
         # Back
         back = QPushButton("Back", question_page)
         back.clicked.connect(self.back)
@@ -243,6 +254,11 @@ class MainWindow(QWidget):
         self.pages.append(question_page)
         self.stackedWidget.addWidget(question_page)
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+    def clone_question(self, question):
+        question["name"] += "-clone"
+        self.questions[self.load_id()] = question
+        self.dump_data(self.questions, "questions.json")
 
 
     def make_choices(self, question_page, question, layout):
