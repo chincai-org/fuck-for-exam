@@ -22,9 +22,7 @@
                                             {
                                                 "id": "1",
                                                 "title": "Level 1: vocab",
-                                                "childs": [
-                                                    "1"
-                                                ]
+                                                "childs": ["1"]
                                             }
                                         ]
                                     }

@@ -5,55 +5,55 @@
 @use "tokens" as *;
 
 @mixin mq($size) {
-  @if map.has-key($breakpoints, $size) {
-    $breakpoint: map-get($breakpoints, $size);
-    @media screen and (min-width: $breakpoint) {
-      @content;
-    }
-  } @else if meta.type-of($size) == number {
-    @if math.is-unitless($size) {
-      @error 'when using a number with @mq() make sure to include a unit';
-    } @else {
-      @media screen and (min-width: $size) {
-        @content;
-      }
-    }
-  } @else {
-    @error 'the keyword #{$size} is not in the $breakpoints map';
-  }
-}
-
-@mixin heading($fs, $color: $heading-color-default) {
-  font-size: $fs;
-  color: $color;
-
-  font-family: $heading-font-family;
-  text-transform: $heading-text-transform;
-  letter-spacing: $heading-letter-spacing;
-  font-weight: $heading-font-weight;
-  line-height: $heading-line-height;
-}
-
-@mixin before-after(
-        $locations: before,
-        $content: "",
-        $position: absolute,
-        $top: null,
-        $bottom: null,
-        $right: null,
-        $left: null
-    ) {
-        position: relative;
-
-        @each $location in $locations {
-            &::#{$location} {
-                content: $content;
-                position: $position;
-                top: $top;
-                bottom: $bottom;
-                right: $right;
-                left: $left;
+    @if map.has-key($breakpoints, $size) {
+        $breakpoint: map-get($breakpoints, $size);
+        @media screen and (min-width: $breakpoint) {
+            @content;
+        }
+    } @else if meta.type-of($size) == number {
+        @if math.is-unitless($size) {
+            @error 'when using a number with @mq() make sure to include a unit';
+        } @else {
+            @media screen and (min-width: $size) {
                 @content;
             }
         }
+    } @else {
+        @error 'the keyword #{$size} is not in the $breakpoints map';
     }
+}
+
+@mixin heading($fs, $color: $heading-color-default) {
+    font-size: $fs;
+    color: $color;
+
+    font-family: $heading-font-family;
+    text-transform: $heading-text-transform;
+    letter-spacing: $heading-letter-spacing;
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
+}
+
+@mixin before-after(
+    $locations: before,
+    $content: "",
+    $position: absolute,
+    $top: null,
+    $bottom: null,
+    $right: null,
+    $left: null
+) {
+    position: relative;
+
+    @each $location in $locations {
+        &::#{$location} {
+            content: $content;
+            position: $position;
+            top: $top;
+            bottom: $bottom;
+            right: $right;
+            left: $left;
+            @content;
+        }
+    }
+}
