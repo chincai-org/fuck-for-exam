@@ -23,7 +23,7 @@
 
     const navigations = [
         { title: "Home", path: "/home", icon: "fa-solid fa-house" },
-        { title: "Setting", path: "/home/setting", icon: "fa-solid fa-gear" },
+        { title: "Settings", path: "/home/setting", icon: "fa-solid fa-gear" },
         { title: "Quest", path: "/home/quest", icon: "" },
         { title: "Leaderboard", path: "/home/leaderboard", icon: "" }
     ];
