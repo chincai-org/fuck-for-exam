@@ -3,7 +3,7 @@
     import { page } from "$app/stores";
     import Buttons from "$lib/components/Button.svelte";
     import Question from "$lib/components/Question.svelte";
-    import "/src/app.scss";
+    import "/src/lib/sass/main.scss";
     import { onNavigate } from "$app/navigation";
 
     // export let data: LayoutData;
@@ -29,9 +29,9 @@
     ];
 </script>
 
-<main>
+<main class="--bg-neutral-100">
     <nav>
-        <ul>
+        <ul class="--nav">
             {#each navigations as navigation}
                 <li class:active={$page.url.pathname === navigation.path}>
                     <i class={navigation.icon} />
@@ -46,6 +46,7 @@
 <style lang="scss">
     @use "/src/lib/sass/theme/colour.scss" as *;
     @use "/src/lib/sass/theme/mixin.scss" as *;
+    @use "/src/lib/sass/abstracts/" as *;
 
     main {
         min-height: 100vh;
@@ -55,7 +56,7 @@
     }
 
     nav {
-        background: $home-sidebar-navigation-background-colour;
+        background: $color-neutral-200;
         top: 0;
         bottom: 0;
         left: 0;
@@ -65,26 +66,25 @@
     }
 
     ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 1rem;
-        font-size: 1.7rem;
+        // margin: 0;
+        // padding: 0;
+        // display: grid;
+        // gap: 1rem;
+        // font-size: 1.7rem;
 
         li {
             display: grid;
             padding-block: 1rem;
             padding-inline: 2rem;
             margin-inline: 1rem 0;
-            box-shadow: 2px 0 0 $default-darktheme-background-colour;
+            box-shadow: 2px 0 0 $color-neutral-100;
             grid-template-columns: 3rem 1fr;
 
             &.active {
                 $border-radius: 3rem;
 
                 view-transition-name: navigation;
-                background-color: $default-darktheme-background-colour;
+                background-color: $color-neutral-100;
                 position: relative;
                 z-index: -1;
                 border-radius: 100vw 0 0 100vw;
@@ -92,19 +92,19 @@
                 @include before-after($locations: before after, $right: 0) {
                     width: $border-radius;
                     height: $border-radius;
-                    background: $home-sidebar-navigation-background-colour;
+                    background: $color-neutral-200;
                 }
 
                 @include before-after($locations: before, $top: $border-radius * -1) {
                     border-radius: 0 0 $border-radius;
-                    box-shadow: ($border-radius / 6) ($border-radius / 6) 0 ($border-radius / 6)
-                        $default-darktheme-background-colour;
+                    box-shadow: calc($border-radius / 6) calc($border-radius / 6) 0
+                        calc($border-radius / 6) $color-neutral-100;
                 }
 
                 @include before-after($locations: after, $bottom: $border-radius * -1) {
                     border-radius: 0 $border-radius 0 0;
-                    box-shadow: ($border-radius / 6) (-($border-radius / 6)) 0 ($border-radius / 6)
-                        $default-darktheme-background-colour;
+                    box-shadow: calc($border-radius / 6) calc(($border-radius / -6)) 0
+                        calc($border-radius / 6) $color-neutral-100;
                 }
             }
 
@@ -118,14 +118,14 @@
             }
         }
 
-        a,
-        i {
-            @include change-default($color: white);
-            display: block;
+        // a,
+        // i {
+        //     @include wanted-default($color: white);
+        //     display: block;
 
-            &:hover {
-                color: rgb(192, 192, 192);
-            }
-        }
+        //     &:hover {
+        //         color: rgb(192, 192, 192);
+        //     }
+        // }
     }
 </style>

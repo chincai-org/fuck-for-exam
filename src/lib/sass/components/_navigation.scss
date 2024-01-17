@@ -3,9 +3,15 @@
 .#{$prefix} {
   &nav {
     --flex-column-gap: #{$navigation-gap};
+    display: $navigation-display;
+    @if $navigation-display == grid {
+      gap: $navigation-gap;
+    }
     list-style: none;
+    user-select: $navigation-user-select;
     font-family: $navigation-font-family;
     font-weight: $navigation-font-weight;
+    font-size: $navigation-font-size;
 
     a {
       color: $navigation-color;
@@ -14,6 +20,10 @@
       &:is(:hover, :focus) {
         color: $navigation-color-hover;
       }
+    }
+
+    i {
+      color: $navigation-color;
     }
   }
 }
