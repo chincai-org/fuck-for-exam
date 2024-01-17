@@ -1,7 +1,7 @@
 import sys
-from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLineEdit, QLabel, QComboBox, QCheckBox
 from json import load, dump
+from qdarkstyle import load_stylesheet_pyqt5
 
 QUESTION_TYPES = ["vocab", "normal"]
 ANSWER_TYPES = ["objective", "subjective"]
@@ -51,8 +51,6 @@ class MainWindow(QWidget):
         home = self.make_home()
         self.pages.append(home)
         self.stackedWidget.addWidget(home)
-
-        
 
         # Create main page with buttons to navigate to other pages
         main_layout = QVBoxLayout(self)
@@ -304,10 +302,8 @@ class MainWindow(QWidget):
     def make_definition_btn(self):
         pass
 
-
-
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setStyleSheet(load_stylesheet_pyqt5())  # Apply dark mode
     mainWindow = MainWindow()
     sys.exit(app.exec_())
