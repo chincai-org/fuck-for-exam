@@ -5,12 +5,7 @@
         "answerType": "objective",
         "question": "Wilayah",
         "answer": "$vocab",
-        "choices": [
-            "$rand",
-            "$rand",
-            "$rand",
-            "$actual"
-        ],
+        "choices": ["$rand", "$rand", "$rand", "$actual"],
         "shuffle": true
     }
 }

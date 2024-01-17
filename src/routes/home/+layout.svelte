@@ -44,8 +44,6 @@
 </main>
 
 <style lang="scss">
-    @use "/src/lib/sass/theme/colour.scss" as *;
-    @use "/src/lib/sass/theme/mixin.scss" as *;
     @use "/src/lib/sass/abstracts/" as *;
 
     main {
@@ -66,12 +64,6 @@
     }
 
     ul {
-        // margin: 0;
-        // padding: 0;
-        // display: grid;
-        // gap: 1rem;
-        // font-size: 1.7rem;
-
         li {
             display: grid;
             padding-block: 1rem;
@@ -117,15 +109,5 @@
                 }
             }
         }
-
-        // a,
-        // i {
-        //     @include wanted-default($color: white);
-        //     display: block;
-
-        //     &:hover {
-        //         color: rgb(192, 192, 192);
-        //     }
-        // }
     }
 </style>

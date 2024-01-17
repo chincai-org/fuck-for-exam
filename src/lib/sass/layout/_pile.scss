@@ -1,11 +1,11 @@
 .#{$prefix} {
-  &pile {
-    display: grid;
-    grid-template-areas: "pile";
-    place-content: center;
+    &pile {
+        display: grid;
+        grid-template-areas: "pile";
+        place-content: center;
 
-    > * {
-      grid-area: pile;
+        > * {
+            grid-area: pile;
+        }
     }
-  }
 }

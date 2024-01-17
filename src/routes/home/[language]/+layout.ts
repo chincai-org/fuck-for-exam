@@ -1,6 +1,6 @@
 import type { PageLoad } from "./$types";
 import { recursiveFind } from "$lib/data/fetchData";
-import { error } from '@sveltejs/kit'
+import { error } from "@sveltejs/kit";
 
 export const load: any = (({ params, url }: any) => {
     url.href;
@@ -8,11 +8,11 @@ export const load: any = (({ params, url }: any) => {
 
     if (!buttons) {
         error(404, {
-			message: 'Not found'
-		});  
+            message: "Not found"
+        });
     }
 
     return {
-        buttons,
+        buttons
     };
 }) satisfies PageLoad;

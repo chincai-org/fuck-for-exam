@@ -138,79 +138,79 @@ $-clr-red-800: hsl(0 75% 17.5%);
 $-clr-red-900: hsl(0 75% 7.5%);
 
 $light: (
-  "neutral": (
-    "000": $-clr-white,
-    "100": $-clr-gray-100,
-    "200": $-clr-gray-200,
-    "300": $-clr-gray-300,
-    "400": $-clr-gray-400,
-    "500": $-clr-gray-500,
-    "600": $-clr-gray-600,
-    "700": $-clr-gray-700,
-    "800": $-clr-gray-800,
-    "900": $-clr-gray-900,
-    "1000": $-clr-black,
-  ),
-  "accent": (
-    "100": $-clr-deeppink-100,
-    "200": $-clr-deeppink-200,
-    "300": $-clr-deeppink-300,
-    "400": $-clr-deeppink-400,
-    "500": $-clr-deeppink-500,
-    "600": $-clr-deeppink-600,
-    "700": $-clr-deeppink-700,
-    "800": $-clr-deeppink-800,
-    "900": $-clr-deeppink-900,
-  ),
-  "primary": (
-    "100": $-clr-skyblue-100,
-    "200": $-clr-skyblue-200,
-    "300": $-clr-skyblue-300,
-    "400": $-clr-skyblue-400,
-    "500": $-clr-skyblue-500,
-    "600": $-clr-skyblue-600,
-    "700": $-clr-skyblue-700,
-    "800": $-clr-skyblue-800,
-    "900": $-clr-skyblue-900,
-  ),
+    "neutral": (
+        "000": $-clr-white,
+        "100": $-clr-gray-100,
+        "200": $-clr-gray-200,
+        "300": $-clr-gray-300,
+        "400": $-clr-gray-400,
+        "500": $-clr-gray-500,
+        "600": $-clr-gray-600,
+        "700": $-clr-gray-700,
+        "800": $-clr-gray-800,
+        "900": $-clr-gray-900,
+        "1000": $-clr-black
+    ),
+    "accent": (
+        "100": $-clr-deeppink-100,
+        "200": $-clr-deeppink-200,
+        "300": $-clr-deeppink-300,
+        "400": $-clr-deeppink-400,
+        "500": $-clr-deeppink-500,
+        "600": $-clr-deeppink-600,
+        "700": $-clr-deeppink-700,
+        "800": $-clr-deeppink-800,
+        "900": $-clr-deeppink-900
+    ),
+    "primary": (
+        "100": $-clr-skyblue-100,
+        "200": $-clr-skyblue-200,
+        "300": $-clr-skyblue-300,
+        "400": $-clr-skyblue-400,
+        "500": $-clr-skyblue-500,
+        "600": $-clr-skyblue-600,
+        "700": $-clr-skyblue-700,
+        "800": $-clr-skyblue-800,
+        "900": $-clr-skyblue-900
+    )
 );
 
 $dark: (
-  "neutral": (
-    "1000": $-clr-white,
-    "900": $-clr-gray-100,
-    "800": $-clr-gray-200,
-    "700": $-clr-gray-300,
-    "600": $-clr-gray-400,
-    "500": $-clr-gray-500,
-    "400": $-clr-gray-600,
-    "300": $-clr-gray-700,
-    "200": $-clr-gray-800,
-    "100": $-clr-gray-900,
-    "000": $-clr-black,
-  ),
-  "accent": (
-    "900": $-clr-deeppink-900,
-    "800": $-clr-deeppink-800,
-    "700": $-clr-deeppink-700,
-    "600": $-clr-deeppink-600,
-    "500": $-clr-deeppink-500,
-    "400": $-clr-deeppink-400,
-    "300": $-clr-deeppink-300,
-    "200": $-clr-deeppink-200,
-    "100": $-clr-deeppink-100,
-  ),
-  "primary": (
-    "900": $-clr-skyblue-900,
-    "800": $-clr-skyblue-800,
-    "700": $-clr-skyblue-700,
-    "600": $-clr-skyblue-600,
-    "500": $-clr-skyblue-500,
-    "400": $-clr-skyblue-400,
-    "300": $-clr-skyblue-300,
-    "200": $-clr-skyblue-200,
-    "100": $-clr-skyblue-100,
-  ),
+    "neutral": (
+        "1000": $-clr-white,
+        "900": $-clr-gray-100,
+        "800": $-clr-gray-200,
+        "700": $-clr-gray-300,
+        "600": $-clr-gray-400,
+        "500": $-clr-gray-500,
+        "400": $-clr-gray-600,
+        "300": $-clr-gray-700,
+        "200": $-clr-gray-800,
+        "100": $-clr-gray-900,
+        "000": $-clr-black
+    ),
+    "accent": (
+        "900": $-clr-deeppink-900,
+        "800": $-clr-deeppink-800,
+        "700": $-clr-deeppink-700,
+        "600": $-clr-deeppink-600,
+        "500": $-clr-deeppink-500,
+        "400": $-clr-deeppink-400,
+        "300": $-clr-deeppink-300,
+        "200": $-clr-deeppink-200,
+        "100": $-clr-deeppink-100
+    ),
+    "primary": (
+        "900": $-clr-skyblue-900,
+        "800": $-clr-skyblue-800,
+        "700": $-clr-skyblue-700,
+        "600": $-clr-skyblue-600,
+        "500": $-clr-skyblue-500,
+        "400": $-clr-skyblue-400,
+        "300": $-clr-skyblue-300,
+        "200": $-clr-skyblue-200,
+        "100": $-clr-skyblue-100
+    )
 );
 
 // contextual color tokens
