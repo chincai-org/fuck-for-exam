@@ -1,5 +1,6 @@
 <script lang="ts">
     export let cards: any;
+    import "/src/lib/sass/main.scss";
 </script>
 
 {#each cards as card}
