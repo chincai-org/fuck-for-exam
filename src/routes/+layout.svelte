@@ -1,5 +1,10 @@
 <script>
     import "../app.pcss";
+    import { FirebaseApp } from "sveltefire";
+
+    import { auth, firestore } from "$lib/firebase/firebase";
 </script>
 
-<slot />
+<FirebaseApp {auth} {firestore}>
+    <slot />
+</FirebaseApp>

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "fuck-for-exam"
-  }
+    "default": "fuck-for-exam",
+    "dev": "fuck-for-exam-dev"
+  },
+  "targets": {},
+  "etags": {}
 }

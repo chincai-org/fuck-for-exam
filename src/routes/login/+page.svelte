@@ -1,7 +1,14 @@
 <script lang="ts">
-    import type { PageData } from "./$types";
-
-    export let data: PageData;
+    import { SignedIn, SignedOut, Doc, Collection } from "sveltefire";
+    import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+    import { auth } from "$lib/firebase/firebase";
 </script>
 
-<main>hello</main>
+<button
+    on:click={() =>
+        signInWithPopup(auth, new GoogleAuthProvider()).then(() => {
+            window.location.href = "/home";
+        })}
+>
+    Sign In
+</button>

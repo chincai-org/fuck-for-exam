@@ -17,7 +17,7 @@
         </h3>
         <div class="--even-columns">
             <button class="--button" data-button="accent">Sign up</button>
-            <button class="--button" data-button="accent">Login</button>
+            <a href="/login"><button class="--button" data-button="accent">Login</button></a>
         </div>
     </div>
 </main>
