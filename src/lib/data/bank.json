@@ -22,7 +22,9 @@
                                             {
                                                 "id": "1",
                                                 "title": "Level 1: vocab",
-                                                "childs": ["1"]
+                                                "childs": [
+                                                    "1"
+                                                ]
                                             }
                                         ]
                                     }
@@ -68,5 +70,24 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "2716",
+        "title": "Toki Pona",
+        "childs": [
+            "2719",
+            "2719",
+            "271a"
+        ]
+    },
+    {
+        "id": "2717",
+        "title": "Esperanto",
+        "childs": []
+    },
+    {
+        "id": "2718",
+        "title": "Malay",
+        "childs": []
     }
 ]

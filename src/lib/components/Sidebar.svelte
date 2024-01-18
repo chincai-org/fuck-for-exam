@@ -1,7 +1,6 @@
 <script lang="ts">
     export let navigations: any;
     export let pageUrlPathname: any;
-    import "/src/lib/sass/main.scss";
 </script>
 
 <section>

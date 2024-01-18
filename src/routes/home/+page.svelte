@@ -32,9 +32,7 @@
     <Doc ref="users/{user.uid}" let:data>
         <main>
             <p>Hello {data.name}</p>
-            <div class="--grid-auto-fit">
-                <Subjectcard {cards} />
-            </div>
+            <Subjectcard {cards} />
             <Button {title} id={data.language} />
         </main>
     </Doc>

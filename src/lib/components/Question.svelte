@@ -5,7 +5,7 @@
     export let questions: Array<string | any>;
 
     console.log(questions);
-
+        
     let current = 0;
     let question: Question;
     $: question = getQuestion(questions[current]);

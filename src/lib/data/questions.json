@@ -5,7 +5,66 @@
         "answerType": "objective",
         "question": "Wilayah",
         "answer": "$vocab",
-        "choices": ["$rand", "$rand", "$rand", "$actual"],
+        "choices": [
+            "$rand",
+            "$rand",
+            "$rand",
+            "$actual"
+        ],
+        "shuffle": true
+    },
+    "2719": {
+        "name": "apa ini",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271a": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271b": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271c": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271d": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271e": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
         "shuffle": true
     }
 }
