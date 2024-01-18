@@ -5,7 +5,120 @@
         "answerType": "objective",
         "question": "Wilayah",
         "answer": "$vocab",
-        "choices": ["$rand", "$rand", "$rand", "$actual"],
+        "choices": [
+            "$rand",
+            "$rand",
+            "$rand",
+            "$actual"
+        ],
         "shuffle": true
+    },
+    "2719": {
+        "name": "apa ini",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271a": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271b": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271c": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271d": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271e": {
+        "name": "apa ini-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "do jews deserve to die to world war 2?",
+        "answer": "yes HAIL HITLER",
+        "choices": [],
+        "shuffle": true
+    },
+    "271f": {
+        "name": "apa itu",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Do jews deserve to die in world war 2?",
+        "answer": "no hitler has one ballz!!!!!!!!!!!!!!!",
+        "choices": [],
+        "shuffle": false
+    },
+    "2720": {
+        "name": "apa itu-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Do jews deserve to die in world war 2?",
+        "answer": "no hitler has one ballz!!!!!!!!!!!!!!!",
+        "choices": [],
+        "shuffle": false
+    },
+    "2721": {
+        "name": "apa itu-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Do jews deserve to die in world war 2?",
+        "answer": "no hitler has one ballz!!!!!!!!!!!!!!!",
+        "choices": [],
+        "shuffle": false
+    },
+    "2722": {
+        "name": "apa itu-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Do jews deserve to die in world war 2?",
+        "answer": "no hitler has one ballz!!!!!!!!!!!!!!!",
+        "choices": [],
+        "shuffle": false
+    },
+    "2723": {
+        "name": "apa itu-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Do jews deserve to die in world war 2?",
+        "answer": "no hitler has one ballz!!!!!!!!!!!!!!!",
+        "choices": [],
+        "shuffle": false
+    },
+    "2724": {
+        "name": "apa itu-clone",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Do jews deserve to die in world war 2?",
+        "answer": "no hitler has one ballz!!!!!!!!!!!!!!!",
+        "choices": [],
+        "shuffle": false
     }
 }

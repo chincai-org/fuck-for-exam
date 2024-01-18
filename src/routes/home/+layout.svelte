@@ -3,7 +3,6 @@
     import { page } from "$app/stores";
     import Buttons from "$lib/components/Button.svelte";
     import Question from "$lib/components/Question.svelte";
-    import "/src/lib/sass/main.scss";
     import { onNavigate } from "$app/navigation";
     import Topbar from "$lib/components/Topbar.svelte";
     import Sidebar from "$lib/components/Sidebar.svelte";
