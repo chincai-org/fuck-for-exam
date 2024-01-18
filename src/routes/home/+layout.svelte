@@ -24,8 +24,8 @@
     const navigations = [
         { title: "Home", path: "/home", icon: "fa-solid fa-house" },
         { title: "Settings", path: "/home/setting", icon: "fa-solid fa-gear" },
-        { title: "Quest", path: "/home/quest", icon: "" },
-        { title: "Leaderboard", path: "/home/leaderboard", icon: "" }
+        { title: "Quest", path: "/home/quest", icon: "fa-solid fa-scroll" },
+        { title: "Leaderboard", path: "/home/leaderboard", icon: "fa-solid fa-trophy" }
     ];
 </script>
 
