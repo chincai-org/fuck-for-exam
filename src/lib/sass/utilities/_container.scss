@@ -9,13 +9,13 @@
         margin-inline: auto;
     }
 
-    &container[data-type="narrow"] {
+    &container[data-container="narrow"] {
         --max-width: #{$container-max-width-narrow};
     }
-    &container[data-type="wide"] {
+    &container[data-container="wide"] {
         --max-width: #{$container-max-width-wide};
     }
-    &container[data-type="full-bleed"] {
+    &container[data-container="full-bleed"] {
         --max-width: 100%;
     }
 }

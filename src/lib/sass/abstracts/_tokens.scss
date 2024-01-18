@@ -72,11 +72,11 @@ $container-max-width-narrow: 40rem;
 $container-max-width-wide: 75rem;
 
 // site header
-$site-header-background-color: $color-primary-300;
+$site-header-background-color: $color-neutral-200;
 $site-header-color: $color-neutral-900;
 $site-header-padding: $size-8 0;
 $site-header-margin: 0;
-$site-header-jusitifcation-small-screens: center;
+$site-header-jusitifcation-small-screens: space-between;
 $site-header-jusitifcation-large-screens: space-between;
 $site-header-alignment: center;
 
