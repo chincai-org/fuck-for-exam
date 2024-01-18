@@ -1,14 +1,25 @@
 <script lang="ts">
-    import { SignedIn, SignedOut, Doc, Collection } from "sveltefire";
     import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-    import { auth } from "$lib/firebase/firebase";
+    import { doc, setDoc, getDoc } from "firebase/firestore";
+    import { auth, firestore } from "$lib/firebase/firebase";
+
+    async function signIn() {
+        signInWithPopup(auth, new GoogleAuthProvider()).then(async ({ user }) => {
+            let docRef = doc(firestore, "users", user.uid);
+
+            if (!(await getDoc(docRef)).exists())
+                await setDoc(
+                    docRef,
+                    {
+                        name: user.displayName,
+                        language: "en"
+                    },
+                    { merge: true }
+                );
+
+            window.location.href = "/home";
+        });
+    }
 </script>
 
-<button
-    on:click={() =>
-        signInWithPopup(auth, new GoogleAuthProvider()).then(() => {
-            window.location.href = "/home";
-        })}
->
-    Sign In
-</button>
+<button on:click={signIn}> Sign In </button>
