@@ -1,7 +1,12 @@
 <script lang="ts">
     import type { PageData } from "./$types";
+    import { goto } from "$app/navigation";
 
     export let data: PageData;
+
+    function signIn() {
+        goto("/login");
+    }
 </script>
 
 <main class="min-height-100vh">
@@ -20,7 +25,7 @@
         <h3 class="--heading-3">for exam</h3>
         <div class="--even-columns">
             <button class="--button" data-button="accent">Sign up</button>
-            <a href="/login"><button class="--button" data-button="accent">Login</button></a>
+            <button on:click={signIn} class="--button" data-button="accent">Login</button>
         </div>
     </div>
 </main>

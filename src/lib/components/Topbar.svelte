@@ -1,6 +1,4 @@
-<script lang="ts">
-    import "/src/lib/sass/main.scss";
-</script>
+<script lang="ts"></script>
 
 <header class="--site-header">
     <div class="--container" data-container="wide">
