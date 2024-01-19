@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLineEdit, QLabel, QComboBox, QCheckBox
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QMenu, QStackedWidget, QLineEdit, QLabel, QComboBox, QCheckBox, QAction
+from PyQt5.QtCore import Qt
 from json import load, dump
 from qdarkstyle import load_stylesheet_pyqt5
 
@@ -65,8 +66,6 @@ class MainWindow(QWidget):
 
         layout.addWidget(self.make_bank_btn(home_page))
 
-        
-
         return home_page
 
     def make_bank_btn(self, page):
@@ -84,11 +83,19 @@ class MainWindow(QWidget):
         layout = QVBoxLayout(bank_page)
         buttons = []
 
-        layout.addWidget(QLabel(["Language", "Form", "Subject", "Bab", "Subbab", "Level", "Questions"][len(history)], bank_page))
-        if datas and not isinstance(datas[0], str):
+        title = ["Language", "Form", "Subject", "Bab", "Subbab", "Level", "Questions"][len(history)]
+
+        layout.addWidget(QLabel(title, bank_page))
+        if title != "Questions":
+            # Categories
+
             for i, data in enumerate(datas):
                 button = QPushButton(data["title"], bank_page)
-                button.clicked.connect(lambda _, d=data["childs"], h=history + [i]: self.bank_start(d, h))
+                button.clicked.connect(lambda _, d=data["childs"], h=history + [data["id"]]: self.bank_start(d, h))
+
+                button.customContextMenuRequested.connect(lambda _, data=data, button=button: self.delete_item(datas, data, layout, buttons, button))
+                button.setContextMenuPolicy(Qt.CustomContextMenu)
+
                 layout.addWidget(button)
                 buttons.append(button)
 
@@ -99,6 +106,8 @@ class MainWindow(QWidget):
             new_item.returnPressed.connect(lambda: self.new_item(layout, buttons, new_item, bank_page, history.copy(), datas))
             layout.addWidget(new_item)
         else:
+            # Questions
+
             for id, question in zip(datas, map(self.get_question, datas)):
                 button = QPushButton(question["name"], bank_page)
                 button.clicked.connect(lambda _, i=id, q=question: self.make_question_editor(i, q))
@@ -123,6 +132,13 @@ class MainWindow(QWidget):
         self.pages.append(bank_page)
         self.stackedWidget.addWidget(bank_page)
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
+
+    def delete_item(self, datas, data, layout: QVBoxLayout, buttons, button):
+        datas.remove(data)
+        buttons.remove(button)
+        layout.removeWidget(button)
+        button.deleteLater()
+        self.dump_data(self.bank, "bank.json")
 
     def import_questions(self, datas):
         import_page = QWidget()
@@ -159,14 +175,12 @@ class MainWindow(QWidget):
         }
 
         self.dump_data(self.questions, "questions.json")
-
         self.make_question_editor(id, self.questions[id])
 
 
 
     def edit_question(self, id, question):
         self.questions[id] = question
-
         self.dump_data(self.questions, "questions.json")
 
     def change_question(self, question, attr, value):
@@ -265,7 +279,7 @@ class MainWindow(QWidget):
         for i, choice in enumerate(question["choices"]):
             choice_widget = QLineEdit(question_page)
             choice_widget.setText(choice)
-            choice_widget.textChanged.connect(lambda _, c=choice, i=i, q=question: self.change_choice(q["choices"], i, choice_widget.text()))
+            choice_widget.textChanged.connect(lambda _, i=i, q=question: self.change_choice(q["choices"], i, choice_widget.text()))
             layout.addWidget(choice_widget)
 
     def change_choice(self, choice, index, value):
@@ -277,13 +291,19 @@ class MainWindow(QWidget):
 
 
     def new_item(self, layout, buttons, item: QLineEdit, bank_page, history, datas):
-        datas.append({"id": self.load_id(), "title": item.text(), "childs": []})
+        id = self.load_id()
+        datas.append({"id": id, "title": item.text(), "childs": []})
         data = datas[-1]
 
         self.dump_data(self.bank, 'bank.json')
 
         button = QPushButton(item.text(), bank_page)
-        button.clicked.connect(lambda: self.bank_start(data["childs"], history + [len(buttons)]))
+
+        button.clicked.connect(lambda: self.bank_start(data["childs"], history + [id]))
+
+        button.customContextMenuRequested.connect(lambda _, data=data, button=button: self.delete_item(datas, data, layout, buttons, button))
+        button.setContextMenuPolicy(Qt.CustomContextMenu)
+
         buttons.append(button)
         layout.insertWidget(len(buttons), button)
         item.setText('')
@@ -294,9 +314,11 @@ class MainWindow(QWidget):
         if len(history) == 0:
             return datas
 
-        print(history)
-        index = history.pop(0)
-        return self.recursive_find(history.copy(), datas[index]["childs"])
+        id = history.pop(0)
+
+        for data in datas:
+            if data["id"] == id:
+                return self.recursive_find(history.copy(), data["childs"])
 
 
     def make_definition_btn(self):
