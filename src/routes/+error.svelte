@@ -1,5 +1,7 @@
 <script>
-    import { goto } from "$app/navigation";
-    // goto("/home");
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    // @ts-nocheck
+
+    import { page } from "$app/stores";
 </script>
+
+<h1>{$page.status}: {$page.error.message}</h1>
