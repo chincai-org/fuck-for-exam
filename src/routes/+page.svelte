@@ -7,6 +7,10 @@
     function signIn() {
         goto("/login");
     }
+
+    function signUp() {
+        goto("/signup");
+    }
 </script>
 
 <main class="min-height-100vh">
@@ -24,7 +28,7 @@
         </h3>
         <h3 class="--heading-3">for exam</h3>
         <div class="--even-columns">
-            <button class="--button" data-button="accent">Sign up</button>
+            <button on:click={signUp} class="--button" data-button="accent">Sign up</button>
             <button on:click={signIn} class="--button" data-button="accent">Login</button>
         </div>
     </div>
