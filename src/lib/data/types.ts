@@ -11,3 +11,8 @@ export interface Question {
     answer: string;
     choices: Array<string>;
 }
+
+export interface Data {
+    name: string;
+    language: string;
+}

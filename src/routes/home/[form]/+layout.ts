@@ -1,22 +1,44 @@
+// @ts-ignore
 import type { PageLoad } from "../[form]/$types";
 import { recursiveFind } from "$lib/data/fetchData";
 import { error } from "@sveltejs/kit";
-import { docStore, userStore, User, SignedOut, Doc } from "sveltefire";
 import { auth, firestore } from "$lib/firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import type { Data } from "$lib/data/types";
 
-const user = userStore(auth);
-const data = docStore(firestore, `users/${user?.uid}`);
+export const load: PageLoad = async ({ params, url }: any) => {
+    return new Promise(async (resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(async user => {
+            if (user) {
+                // @ts-ignore
+                const docRef = doc<Data>(firestore, "users", user.uid);
+                // @ts-ignore
+                const result = await getDoc<Data>(docRef);
+                const data = result.data();
 
-export const load: any = (({ params, url }: any) => {
-    url.href;
-    let routeList = Object.values(params).unshift(data?.language)
-    const buttons = recursiveFind(routeList);
-    if (!buttons) {
-        error(404, {
-            message: "Not found"
+                console.log(user.uid);
+                console.log(data);
+
+                const routeList = [data.language].concat(Object.values(params));
+                const buttons = recursiveFind(routeList);
+
+                if (!buttons) {
+                    error(404, {
+                        message: "Not found"
+                    });
+                }
+
+                resolve({
+                    buttons
+                });
+            } else {
+                error(403, {
+                    message: "Unauthorized"
+                });
+            }
+
+            // Unsubscribe the listener to avoid memory leaks
+            unsubscribe();
         });
-    }
-    return {
-        buttons
-    };
-}) satisfies PageLoad;
+    });
+};
