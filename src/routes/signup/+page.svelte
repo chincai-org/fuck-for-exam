@@ -13,9 +13,15 @@
     let password: string;
     let cpassword: string;
 
+    let warning: string = "";
+
     async function signUp() {
-        if (password != cpassword || name == "") {
-            goto("/home"); // TODO: handle stuff
+        if (name == "") {
+            warning = "Please fill in the name";
+            return;
+        } else if (password != cpassword) {
+            warning = "Password does not match";
+            return;
         }
 
         createUserWithEmailAndPassword(auth, email, password)
@@ -53,10 +59,12 @@
     }
 </script>
 
-<input type="text" bind:value={email} placeholder="Enter email" />
-<input type="text" bind:value={name} placeholder="Full name" />
-<input type="password" bind:value={password} placeholder="Enter password" />
-<input type="password" bind:value={cpassword} placeholder="Confirm password" />
+<p>{warning}</p>
+
+<input type="text" bind:value={email} placeholder="Enter email" required />
+<input type="text" bind:value={name} placeholder="Full name" required />
+<input type="password" bind:value={password} placeholder="Enter password" required />
+<input type="password" bind:value={cpassword} placeholder="Confirm password" required />
 <button on:click={signUp}>Sign up</button>
 
 <button on:click={signInWithAuth}>Sign up with Google</button>
