@@ -5,8 +5,10 @@
     export let data: PageData;
 
     $: ({ buttons } = data);
+
+    function next(correct: boolean) {}
 </script>
 
 <main>
-    <Question questions={buttons} />
+    <Question questions={buttons} {next} />
 </main>
