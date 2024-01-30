@@ -5,7 +5,30 @@
         "answerType": "objective",
         "question": "Wilayah",
         "answer": "$vocab",
-        "choices": ["$rand", "$rand", "$rand", "$actual"],
+        "choices": [
+            "$rand",
+            "$rand",
+            "$rand",
+            "$actual"
+        ],
         "shuffle": true
+    },
+    "2736": {
+        "name": "test1",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "Are you stupid?",
+        "answer": "yes",
+        "choices": ["yes", "jes", "ne", "no"],
+        "shuffle": true
+    },
+    "2737": {
+        "name": "test2",
+        "questionType": "normal",
+        "answerType": "objective",
+        "question": "The meaning of life",
+        "answer": "What is the answer to life the universe and everything",
+        "choices": ["42", "69", "marijuana", "xiang le"],
+        "shuffle": false
     }
 }
