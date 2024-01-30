@@ -19,8 +19,8 @@ export const load: PageLoad = async ({ params, url }: any) => {
                 console.log(user.uid);
                 console.log(data);
 
-                const routeList = [data.language].concat(Object.values(params));
-                const buttons = recursiveFind(routeList);
+                const routeList = [data?.language].concat(Object.values(params));
+                const buttons = recursiveFind(routeList as string[]);
 
                 if (!buttons) {
                     error(404, {
