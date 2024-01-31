@@ -36,8 +36,26 @@
     }
 </script>
 
-<input type="text" bind:value={email} placeholder="Enter email" />
-<input type="password" bind:value={password} placeholder="Enter password" />
-<button on:click={signIn}>Sign in</button>
+<div class="--text-center --contact-form">
+    <h1 class="--heading-1 --clr-accent-400  --padding-1">FUCK</h1>
+    <h3 class="--heading-3">Sign in an existing account</h3>
+    <div class="form-group --border-radius-1 --margin-inline-15 --margin-block-5 --padding-11">
+        <button on:click={signInWithAuth} class="--button" data-button="accent">
+            Sign in with Google
+        </button>
+        <input type="text" bind:value={email} placeholder="Enter email" class="--input" />
+        <input type="password" bind:value={password} placeholder="Enter password" class="--input" />
+        <a>Forgot your password?</a>
+        <button on:click={signIn} class="--button" data-button="accent">Sign in</button>
+    </div>
+</div>
 
-<button on:click={signInWithAuth}>Sign in with Google</button>
+<style lang="scss">
+    .--border-radius-1 {
+        border: 2px solid white;
+    }
+
+    .form-group * {
+        margin: 0.3rem;
+    }
+</style>
