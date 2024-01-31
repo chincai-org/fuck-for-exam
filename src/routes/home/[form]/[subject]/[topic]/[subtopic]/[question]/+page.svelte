@@ -6,7 +6,9 @@
 
     $: ({ buttons } = data);
 
-    function next(correct: boolean) {}
+    function next(correctAmount: number) {
+        console.log(`Get ${correctAmount} correct`);
+    }
 </script>
 
 <main>
