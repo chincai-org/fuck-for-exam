@@ -1,5 +1,6 @@
-{
-    "1": {
+[
+    {
+        "id": "1",
         "name": "wilayah vocab question",
         "questionType": "vocab",
         "answerType": "objective",
@@ -13,22 +14,34 @@
         ],
         "shuffle": true
     },
-    "2736": {
+    {
+        "id": "2716",
         "name": "test1",
         "questionType": "normal",
         "answerType": "objective",
         "question": "Are you stupid?",
         "answer": "yes",
-        "choices": ["yes", "jes", "ne", "no"],
+        "choices": [
+            "yes",
+            "jes",
+            "ne",
+            "no"
+        ],
         "shuffle": true
     },
-    "2737": {
+    {
+        "id": "2717",
         "name": "test2",
         "questionType": "normal",
         "answerType": "objective",
-        "question": "The meaning of life",
-        "answer": "What is the answer to life the universe and everything",
-        "choices": ["42", "69", "marijuana", "xiang le"],
+        "question": "What is the answer to life the universe and everything",
+        "answer": "42",
+        "choices": [
+            "42",
+            "69",
+            "marijuana",
+            "xiang le"
+        ],
         "shuffle": false
     }
-}
+]

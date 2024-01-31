@@ -4,7 +4,7 @@ import questions from "./questions.json";
 import type { Question, Result } from "./types";
 
 const definitionsDict: { [key: string]: any } = definitions;
-const questionsDict: { [key: string]: Question } = questions;
+const questionsDict: Array<Question> = questions;
 
 export function getDefinition(lang: any, word: any) {
     return definitionsDict[lang][word];
@@ -27,5 +27,5 @@ export function recursiveFind(routeList: Array<string>, data: Array<Result | str
 }
 
 export function getQuestion(id: string) {
-    return questionsDict[id];
+    return questionsDict.find(v => v.id == id);
 }

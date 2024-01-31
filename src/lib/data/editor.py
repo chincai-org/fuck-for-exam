@@ -27,7 +27,9 @@ class MainWindow(QWidget):
 
 
     def get_question(self, id):
-        return self.questions[id]
+        for question in self.questions:
+            if question["id"] == id:
+                return question
 
     def dump_data(self, data, file):
         with open(file, 'w', encoding='utf-8') as f:
@@ -108,9 +110,9 @@ class MainWindow(QWidget):
         else:
             # Questions
 
-            for id, question in zip(datas, map(self.get_question, datas)):
+            for question in map(self.get_question, datas):
                 button = QPushButton(question["name"], bank_page)
-                button.clicked.connect(lambda _, i=id, q=question: self.make_question_editor(i, q))
+                button.clicked.connect(lambda _, i=question["id"], q=question: self.make_question_editor(i, q))
                 layout.addWidget(button)
 
             # Import existing questions
@@ -150,9 +152,9 @@ class MainWindow(QWidget):
 
             self.back()
 
-        for id, question in self.questions.items():
+        for question in self.questions:
             button = QPushButton(question["name"], import_page)
-            button.clicked.connect(lambda _, id=id: manage_click(id))
+            button.clicked.connect(lambda _, id=question["id"]: manage_click(id))
             layout.addWidget(button)
 
         self.pages.append(import_page)
@@ -164,7 +166,8 @@ class MainWindow(QWidget):
         datas.append(id)
         self.dump_data(self.bank, "bank.json")
 
-        self.questions[id] = {
+        self.questions.append({
+            "id": id,
             "name": "Write a unique name that helps u to identify this question",
             "questionType": "normal",
             "answerType": "objective",
@@ -172,15 +175,18 @@ class MainWindow(QWidget):
             "answer": "Skribu vian respondon ĉi tie",
             "choices": [],
             "shuffle": False
-        }
+        })
 
         self.dump_data(self.questions, "questions.json")
-        self.make_question_editor(id, self.questions[id])
+        self.make_question_editor(id, self.questions[-1])
 
-
+    def find_question_index(self, id):
+        for i, question in enumerate(self.questions):
+            if question["id"] == id:
+                return i
 
     def edit_question(self, id, question):
-        self.questions[id] = question
+        self.questions[self.find_question_index(id)] = question
         self.dump_data(self.questions, "questions.json")
 
     def change_question(self, question, attr, value):
@@ -269,7 +275,8 @@ class MainWindow(QWidget):
 
     def clone_question(self, question):
         question["name"] += "-clone"
-        self.questions[self.load_id()] = question
+        question["id"] = self.load_id()
+        self.questions.append(question)
         self.dump_data(self.questions, "questions.json")
 
 
