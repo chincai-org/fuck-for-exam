@@ -7,6 +7,8 @@ import { doc, getDoc } from "firebase/firestore";
 import type { Data } from "$lib/data/types";
 
 export const load: PageLoad = async ({ params, url }: any) => {
+    url.href;
+
     return new Promise(async (resolve, reject) => {
         const unsubscribe = auth.onAuthStateChanged(async user => {
             if (user) {
