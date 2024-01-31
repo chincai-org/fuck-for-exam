@@ -3,7 +3,7 @@
     import type { Question } from "$lib/data/types";
 
     export let questions: Array<string | any>;
-    export let next: (correctAmount: number) => void;
+    export let next: (score: number) => void;
 
     console.log(questions);
 
@@ -58,14 +58,14 @@
                     current = 0;
                     askWrong = true;
                 } else {
-                    next(correctAmount);
+                    next(correctAmount / questions.length);
                 }
             } else {
                 current++;
             }
         } else {
             if (wrongs.length == 0) {
-                next(correctAmount);
+                next(correctAmount / questions.length);
             }
 
             wrongs = wrongs.toSorted(() => Math.random() - 0.5);
