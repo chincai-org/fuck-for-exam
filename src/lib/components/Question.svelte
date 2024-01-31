@@ -10,12 +10,12 @@
     let wrongs: Array<Question> = [];
 
     let current = 0;
-    let correct = 0;
+    let correctAmount = 0;
     let question: Question;
     let askWrong = false;
-    let trigger = 0;
+    let answered = false;
+    let correct = false;
     $: {
-        let _ = trigger + 1;
         question = getQuestion(askWrong ? wrongs[current].id : questions[current]) as Question;
         console.log(current, askWrong, question);
     }
@@ -23,41 +23,55 @@
         ? question.choices.toSorted(() => Math.random() - 0.5)
         : question.choices;
 
+    function validate(choice: string) {
+        if (!askWrong) {
+            if (choice == question.answer) {
+                correct = true;
+                correctAmount++;
+            } else {
+                correct = false;
+                wrongs.push(question);
+            }
+        } else {
+            if (choice != question.answer) {
+                correct = false;
+                wrongs.push(question);
+            } else {
+                correct = true;
+            }
+
+            wrongs.shift();
+        }
+    }
+
     function clickChoice(choice: string) {
         return (_: any) => {
-            if (!askWrong) {
-                if (choice == question.answer) {
-                    correct++;
-                } else {
-                    wrongs.push(question);
-                    console.log(wrongs);
-                }
+            validate(choice);
+            answered = true;
+        };
+    }
 
-                if (current == questions.length - 1) {
-                    if (wrongs) {
-                        current = 0;
-                        askWrong = true;
-                    } else {
-                        next(correct);
-                    }
+    function nextQuestion() {
+        if (!askWrong) {
+            if (current == questions.length - 1) {
+                if (wrongs.length > 0) {
+                    current = 0;
+                    askWrong = true;
                 } else {
-                    current++;
+                    next(correctAmount);
                 }
             } else {
-                if (choice != question.answer) {
-                    wrongs.push(question);
-                    console.log(wrongs);
-                }
-
-                wrongs.shift();
-
-                if (wrongs.length == 0) {
-                    next(correct);
-                }
-
-                wrongs = wrongs.toSorted(() => Math.random() - 0.5);
+                current++;
             }
-        };
+        } else {
+            if (wrongs.length == 0) {
+                next(correctAmount);
+            }
+
+            wrongs = wrongs.toSorted(() => Math.random() - 0.5);
+        }
+
+        answered = false;
     }
 </script>
 
@@ -75,4 +89,14 @@
     {#each choices as choice}
         <button on:click={clickChoice(choice)}>{choice}</button>
     {/each}
+{/if}
+
+{#if answered}
+    <div>
+        <p>{correct ? "Correct" : "Wrong"}</p>
+        {#if !correct}
+            <p>Correct: {question.answer}</p>
+        {/if}
+        <button on:click={nextQuestion}>Next question</button>
+    </div>
 {/if}
