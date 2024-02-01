@@ -5,9 +5,10 @@
     export let data: PageData;
 
     $: ({ buttons } = data);
-    $: ({ id, title } = buttons[0]);
 </script>
 
 <main>
-    <Button {title} {id} />
+    {#each buttons as button}
+        <Button title={button.title} id={button.id} />
+    {/each}
 </main>
