@@ -1,15 +1,13 @@
 <script lang="ts">
-    export let cards: any;
+    export let card: any;
 </script>
 
 <div class="--grid-auto-fit">
-    {#each cards as card}
-        <div class="--card">
-            <h1 class="--card__heading">{card.title}</h1>
-            <hr class="--bg-neutral-1000" />
-            <span class="--clr-neutral-500">Continue lesson Topic {card.lastDoneTopic}</span>
-        </div>
-    {/each}
+    <div class="--card">
+        <h1 class="--card__heading">{card.title}</h1>
+        <hr class="--bg-neutral-1000" />
+        <span class="--clr-neutral-500">Continue lesson Topic {card.lastDoneTopic}</span>
+    </div>
 </div>
 
 <style lang="scss">

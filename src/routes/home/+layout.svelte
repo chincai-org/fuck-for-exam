@@ -6,6 +6,7 @@
     import { onNavigate } from "$app/navigation";
     import Topbar from "$lib/components/Topbar.svelte";
     import Sidebar from "$lib/components/Sidebar.svelte";
+    import { SignedOut } from "sveltefire";
 
     // export let data: LayoutData;
 
@@ -29,6 +30,10 @@
         { title: "Leaderboard", path: "/home/leaderboard", icon: "fa-solid fa-trophy" }
     ];
 </script>
+
+<SignedOut>
+    <p>Please <a href="/login">sign in</a> first</p>
+</SignedOut>
 
 <main class="--bg-neutral-100">
     <Topbar />

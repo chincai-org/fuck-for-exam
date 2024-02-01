@@ -7,33 +7,23 @@
     import Button from "$lib/components/Button.svelte";
     import Subjectcard from "$lib/components/Subjectcard.svelte";
     import { auth, firestore } from "$lib/firebase/firebase";
-    import { docStore, userStore, User, SignedOut, Doc } from "sveltefire";
+    import { userStore, User, Doc } from "sveltefire";
+    import { recursiveFind } from "$lib/data/fetchData";
+    import type { Result } from "$lib/data/types";
 
-    const user = userStore(auth);
-
-    let title = "why lang first";
-    let id = "zh";
-
-    const cards = [
-        { title: "Sejarah", lastDoneTopic: "12.2" },
-        { title: "Math", lastDoneTopic: "2.2" },
-        { title: "Science", lastDoneTopic: "1.2" },
-        { title: "Sejarah", lastDoneTopic: "12.2" },
-        { title: "Math", lastDoneTopic: "2.2" },
-        { title: "Science", lastDoneTopic: "1.2" }
-    ];
+    function find(lang: string) {
+        return recursiveFind([lang]) as Result[];
+    }
 </script>
-
-<SignedOut>
-    <p>Please <a href="/login">sign in</a> first</p>
-</SignedOut>
 
 <User let:user>
     <Doc ref="users/{user.uid}" let:data>
         <main>
-            <p>Hello {data.name}</p>
-            <Subjectcard {cards} />
-            <Button {title} id={data.language} />
+            {#each find(data.language) as button}
+                <Button title={button.title} id={button.id} />
+            {/each}
+
+            <!-- <Subjectcard {card} /> -->
         </main>
     </Doc>
 </User>
