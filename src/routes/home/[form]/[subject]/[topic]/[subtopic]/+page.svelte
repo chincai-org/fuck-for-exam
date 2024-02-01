@@ -9,5 +9,7 @@
 </script>
 
 <main>
-    <Button {title} {id} />
+    {#each buttons as button}
+        <Button title={button.title} id={button.id} />
+    {/each}
 </main>
