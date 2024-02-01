@@ -17,7 +17,7 @@
 </script>
 
 <main>
-    {#if !score}
+    {#if score == undefined}
         <Question questions={buttons} {next} />
     {:else}
         <Stats {score} timeInMilliseconds={timeLapse} />
