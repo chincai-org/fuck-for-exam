@@ -53,24 +53,35 @@
 
     function nextQuestion() {
         if (!askWrong) {
+            // Answering normal questions
             if (current == questions.length - 1) {
+                // No more questions left
+
+                // Check if have wrong questions
                 if (wrongs.length > 0) {
+                    // If got wrong
                     current = 0;
                     askWrong = true;
                 } else {
+                    // No wrong, go to next level
                     next(correctAmount / questions.length);
                 }
             } else {
+                // Got questions left, go to next question
                 current++;
             }
         } else {
+            // Answering wrong questions
             if (wrongs.length == 0) {
-                next(correctAmount / questions.length);
+                // No wrong questions left
+                next(correctAmount / questions.length); // go to next level
             }
 
+            // Shuffle the wrong question list (apparantly this is the best solution I figured out to trigger the reactivity event)
             wrongs = wrongs.toSorted(() => Math.random() - 0.5);
         }
 
+        // Remove the result
         answered = false;
     }
 </script>
