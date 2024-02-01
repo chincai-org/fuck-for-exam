@@ -37,11 +37,11 @@
 </script>
 
 <div class="--text-center --contact-form">
-    <h1 class="--heading-1 --clr-accent-400  --padding-1">FUCK</h1>
+    <h1 class="--heading-1 --clr-accent-400 --padding-1">FUCK</h1>
     <h3 class="--heading-3">Sign in an existing account</h3>
     <div class="form-group --border-radius-1 --margin-inline-15 --margin-block-5 --padding-11">
         <button on:click={signInWithAuth} class="--button" data-button="accent">
-            Sign in with Google
+            <i class="fa-brands fa-google" />Sign in with Google
         </button>
         <input type="text" bind:value={email} placeholder="Enter email" class="--input" />
         <input type="password" bind:value={password} placeholder="Enter password" class="--input" />
@@ -51,8 +51,9 @@
 </div>
 
 <style lang="scss">
+    @use "/src/lib/sass/abstracts/" as *;
     .--border-radius-1 {
-        border: 2px solid white;
+        border: 2px solid $color-neutral-800;
     }
 
     .form-group * {
