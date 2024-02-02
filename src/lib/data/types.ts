@@ -17,4 +17,7 @@ export interface Question {
 export interface Data {
     name: string;
     language: string;
+    history: {
+        [language: string]: Array<string>;
+    };
 }
