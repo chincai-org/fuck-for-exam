@@ -34,7 +34,7 @@
             const updatedHistory = [path, ...history.slice(0, index), ...history.slice(index + 1)];
             await updateDoc(doc(firestore, "users", $user?.uid as string), {
                 history: {
-                    language: updatedHistory
+                    [language]: updatedHistory
                 }
             });
         } else {
@@ -42,7 +42,7 @@
             const updatedHistory = [path, ...history];
             await updateDoc(doc(firestore, "users", $user?.uid as string), {
                 history: {
-                    language: updatedHistory
+                    [language]: updatedHistory
                 }
             });
         }
