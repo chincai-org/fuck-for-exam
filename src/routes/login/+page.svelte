@@ -1,7 +1,7 @@
 <script lang="ts">
     import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-    import { doc, setDoc, getDoc } from "firebase/firestore";
-    import { auth, firestore } from "$lib/firebase/firebase";
+    import { auth } from "$lib/firebase/firebase";
+    import { signInWithAuth } from "$lib/firebase/utils";
 
     let email: string;
     let password: string;
@@ -15,24 +15,6 @@
                 console.log(reason);
                 window.location.href = "/";
             });
-    }
-
-    async function signInWithAuth() {
-        signInWithPopup(auth, new GoogleAuthProvider()).then(async ({ user }) => {
-            let docRef = doc(firestore, "users", user.uid);
-
-            if (!(await getDoc(docRef)).exists())
-                await setDoc(
-                    docRef,
-                    {
-                        name: user.displayName,
-                        language: "en"
-                    },
-                    { merge: true }
-                );
-
-            window.location.href = "/home";
-        });
     }
 </script>
 
