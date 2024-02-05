@@ -7,7 +7,12 @@ export async function initiateUser(docRef: DocumentReference, username: string) 
         docRef,
         {
             name: username,
-            language: "en"
+            language: "en",
+            history: {
+                en: []
+            },
+            streak: 0,
+            lastday: 0
         },
         { merge: true }
     );
