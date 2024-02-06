@@ -1,4 +1,4 @@
-import { doc, setDoc, getDoc, DocumentReference } from "firebase/firestore";
+import { doc, setDoc, getDoc, DocumentReference, Timestamp } from "firebase/firestore";
 import { auth, firestore } from "$lib/firebase/firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -12,7 +12,7 @@ export async function initiateUser(docRef: DocumentReference, username: string) 
                 en: []
             },
             streak: 0,
-            lastday: 0
+            lastDay: Timestamp.fromMillis(0)
         },
         { merge: true }
     );
