@@ -130,7 +130,7 @@
         {#if !correct}
             <p>Correct: {question.answer}</p>
         {/if}
-        <button on:click={nextQuestion}>Continue</button>
+        <button class="--button" data-button="accent" on:click={nextQuestion}>Continue</button>
     </div>
 {/if}
 
