@@ -15,7 +15,7 @@
     let askWrong = false;
     let answered = false;
     let correct = false;
-    let btns = {};
+    let lastChoice: string;
     $: {
         question = getQuestion(askWrong ? wrongs[current].id : questions[current]) as Question;
         console.log(current, askWrong, question);
@@ -48,6 +48,7 @@
     function clickChoice(choice: string) {
         return (_: any) => {
             validate(choice);
+            lastChoice = choice;
             answered = true;
         };
     }
@@ -98,8 +99,18 @@
 <p>{question.question}</p>
 
 {#if question.answerType == "objective"}
-    {#each Object.keys(btns) as btn}
-        <button class={btns[btn]} on:click={clickChoice(btn)}>{btn}</button>
+    {#each choices as choice}
+        {#if answered}
+            {#if choice == question.answer}
+                <button class="correct" on:click={clickChoice(choice)}>{choice}</button>
+            {:else if choice == lastChoice}
+                <button class="wrong" on:click={clickChoice(choice)}>{choice}</button>
+            {:else}
+                <button on:click={clickChoice(choice)}>{choice}</button>
+            {/if}
+        {:else}
+            <button on:click={clickChoice(choice)}>{choice}</button>
+        {/if}
     {/each}
 {/if}
 
