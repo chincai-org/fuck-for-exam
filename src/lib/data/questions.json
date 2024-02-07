@@ -43,5 +43,35 @@
             "xiang le"
         ],
         "shuffle": false
+    },
+    {
+        "id": "271b",
+        "name": "toki",
+        "questionType": "vocab",
+        "answerType": "objective",
+        "question": "toki",
+        "answer": "language",
+        "choices": [
+            "language",
+            "good",
+            "bad",
+            "lemon"
+        ],
+        "shuffle": true
+    },
+    {
+        "id": "271c",
+        "name": "pona",
+        "questionType": "vocab",
+        "answerType": "objective",
+        "question": "pona",
+        "answer": "good",
+        "choices": [
+            "language",
+            "good",
+            "bad",
+            "lemon"
+        ],
+        "shuffle": true
     }
 ]

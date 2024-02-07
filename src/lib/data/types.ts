@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface Result {
     id: string;
     title: string;
@@ -20,4 +22,6 @@ export interface Data {
     history: {
         [language: string]: Array<string>;
     };
+    streak: number;
+    lastDay: Timestamp;
 }
