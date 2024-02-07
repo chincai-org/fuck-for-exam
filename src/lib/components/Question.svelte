@@ -15,7 +15,7 @@
     let askWrong = false;
     let answered = false;
     let correct = false;
-    let btns = {}
+    let btns = {};
     $: {
         question = getQuestion(askWrong ? wrongs[current].id : questions[current]) as Question;
         console.log(current, askWrong, question);
@@ -23,12 +23,6 @@
     $: choices = question.shuffle
         ? question.choices.toSorted(() => Math.random() - 0.5)
         : question.choices;
-
-    $: choices.forEach((element) => {
-        btns[element] = "--button --bg-accent-400";
-    });
-
-    $: console.log(btns)
 
     function validate(choice: string) {
         if (!askWrong) {
@@ -121,7 +115,6 @@
 
 <style lang="scss">
     @use "/src/lib/sass/abstracts/" as *;
-
 
     .correct {
         background-color: $color-green-600;
