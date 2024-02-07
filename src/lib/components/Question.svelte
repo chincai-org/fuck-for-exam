@@ -52,7 +52,6 @@
     }
 
     function clickChoice(choice: string) {
-        btns[choice] == ""
         return (_: any) => {
             validate(choice);
             answered = true;
