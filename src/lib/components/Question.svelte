@@ -102,14 +102,24 @@
     {#each choices as choice}
         {#if answered}
             {#if choice == question.answer}
-                <button class="correct" on:click={clickChoice(choice)}>{choice}</button>
+                <button
+                    class="--button correct"
+                    data-button="question"
+                    on:click={clickChoice(choice)}>{choice}</button
+                >
             {:else if choice == lastChoice}
-                <button class="wrong" on:click={clickChoice(choice)}>{choice}</button>
+                <button class="--button wrong" data-button="question" on:click={clickChoice(choice)}
+                    >{choice}</button
+                >
             {:else}
-                <button on:click={clickChoice(choice)}>{choice}</button>
+                <button class="--button" data-button="question" on:click={clickChoice(choice)}
+                    >{choice}</button
+                >
             {/if}
         {:else}
-            <button on:click={clickChoice(choice)}>{choice}</button>
+            <button class="--button" data-button="question" on:click={clickChoice(choice)}
+                >{choice}</button
+            >
         {/if}
     {/each}
 {/if}
@@ -127,11 +137,31 @@
 <style lang="scss">
     @use "/src/lib/sass/abstracts/" as *;
 
+    [data-button="question"] {
+        background-color: $button-accent-background;
+        color: $button-accent-color;
+
+        &:is(:hover, :focus) {
+            background-color: $button-accent-background-hover;
+            color: $button-accent-color-hover;
+        }
+    }
+
     .correct {
-        background-color: $color-green-600;
+        background-color: $color-primary-green-500;
+
+        &:is(:hover, :focus) {
+            background-color: $color-primary-green-600;
+            color: black;
+        }
     }
 
     .wrong {
-        background-color: $color-red-600;
+        background-color: $color-primary-red-500;
+
+        &:is(:hover, :focus) {
+            background-color: $color-primary-red-600;
+            color: black;
+        }
     }
 </style>

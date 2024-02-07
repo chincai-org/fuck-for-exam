@@ -200,7 +200,7 @@ $dark: (
         "200": $-clr-deeppink-200,
         "100": $-clr-deeppink-100
     ),
-    "primary": (
+    "primary-blue": (
         "900": $-clr-skyblue-900,
         "800": $-clr-skyblue-800,
         "700": $-clr-skyblue-700,
@@ -210,6 +210,28 @@ $dark: (
         "300": $-clr-skyblue-300,
         "200": $-clr-skyblue-200,
         "100": $-clr-skyblue-100
+    ),
+    "primary-red": (
+        "900": $-clr-red-900,
+        "800": $-clr-red-800,
+        "700": $-clr-red-700,
+        "600": $-clr-red-600,
+        "500": $-clr-red-500,
+        "400": $-clr-red-400,
+        "300": $-clr-red-300,
+        "200": $-clr-red-200,
+        "100": $-clr-red-100
+    ),
+    "primary-green": (
+        "900": $-clr-green-900,
+        "800": $-clr-green-800,
+        "700": $-clr-green-700,
+        "600": $-clr-green-600,
+        "500": $-clr-green-500,
+        "400": $-clr-green-400,
+        "300": $-clr-green-300,
+        "200": $-clr-green-200,
+        "100": $-clr-green-100
     )
 );
 
@@ -226,15 +248,35 @@ $color-neutral-800: var(--neutral-800);
 $color-neutral-900: var(--neutral-900);
 $color-neutral-1000: var(--neutral-1000);
 
-$color-primary-100: var(--primary-100);
-$color-primary-200: var(--primary-200);
-$color-primary-300: var(--primary-300);
-$color-primary-400: var(--primary-400);
-$color-primary-500: var(--primary-500);
-$color-primary-600: var(--primary-600);
-$color-primary-700: var(--primary-700);
-$color-primary-800: var(--primary-800);
-$color-primary-900: var(--primary-900);
+$color-primary-blue-100: var(--primary-blue-100);
+$color-primary-blue-200: var(--primary-blue-200);
+$color-primary-blue-300: var(--primary-blue-300);
+$color-primary-blue-400: var(--primary-blue-400);
+$color-primary-blue-500: var(--primary-blue-500);
+$color-primary-blue-600: var(--primary-blue-600);
+$color-primary-blue-700: var(--primary-blue-700);
+$color-primary-blue-800: var(--primary-blue-800);
+$color-primary-blue-900: var(--primary-blue-900);
+
+$color-primary-green-100: var(--primary-green-100);
+$color-primary-green-200: var(--primary-green-200);
+$color-primary-green-300: var(--primary-green-300);
+$color-primary-green-400: var(--primary-green-400);
+$color-primary-green-500: var(--primary-green-500);
+$color-primary-green-600: var(--primary-green-600);
+$color-primary-green-700: var(--primary-green-700);
+$color-primary-green-800: var(--primary-green-800);
+$color-primary-green-900: var(--primary-green-900);
+
+$color-primary-red-100: var(--primary-red-100);
+$color-primary-red-200: var(--primary-red-200);
+$color-primary-red-300: var(--primary-red-300);
+$color-primary-red-400: var(--primary-red-400);
+$color-primary-red-500: var(--primary-red-500);
+$color-primary-red-600: var(--primary-red-600);
+$color-primary-red-700: var(--primary-red-700);
+$color-primary-red-800: var(--primary-red-800);
+$color-primary-red-900: var(--primary-red-900);
 
 $color-accent-100: var(--accent-100);
 $color-accent-200: var(--accent-200);
@@ -245,7 +287,3 @@ $color-accent-600: var(--accent-600);
 $color-accent-700: var(--accent-700);
 $color-accent-800: var(--accent-800);
 $color-accent-900: var(--accent-900);
-
-//Specific colour usage
-$color-green-600: $-clr-green-600;
-$color-red-600: $-clr-red-600

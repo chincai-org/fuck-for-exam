@@ -9,7 +9,7 @@ $enable-media-query-dark-mode: true;
 
 // Contextual
 $color-text-default: $color-neutral-700;
-$color-background-default: $color-primary-100;
+$color-background-default: $color-primary-blue-100;
 $color-text-interactive-default: $color-accent-400;
 $color-text-interactive-hover: $color-accent-500;
 
@@ -92,10 +92,10 @@ $navigation-display: grid;
 $navigation-user-select: none;
 
 // site footer
-$footer-background-color: $color-primary-300;
-$footer-text-color: $color-primary-900;
+$footer-background-color: $color-primary-blue-300;
+$footer-text-color: $color-primary-blue-900;
 $footer-link-color: $color-neutral-100;
-$footer-link-color-hover: $color-primary-200;
+$footer-link-color-hover: $color-primary-blue-200;
 $footer-link-font-family: $font-family-accent;
 $footer-link-text-decoration: none;
 
@@ -113,9 +113,9 @@ $button-accent-background: $color-accent-400;
 $button-accent-color-hover: $color-neutral-100;
 $button-accent-background-hover: $color-accent-500;
 $button-primary-color: $color-neutral-100;
-$button-primary-background: $color-primary-700;
+$button-primary-background: $color-primary-blue-700;
 $button-primary-color-hover: $color-neutral-100;
-$button-primary-background-hover: $color-primary-800;
+$button-primary-background-hover: $color-primary-blue-800;
 
 // cards
 $card-flow-spacing: $size-2;
@@ -140,12 +140,12 @@ $form-input-font-family: $body-font-family;
 $form-input-font-weight: $font-weight-semi-bold;
 $form-input-font-size: $body-font-size;
 $form-input-background-color: $color-neutral-100;
-$form-input-border-default: 3px solid $color-primary-200;
-$form-input-border-focus: 3px solid $color-primary-400;
+$form-input-border-default: 3px solid $color-primary-blue-200;
+$form-input-border-focus: 3px solid $color-primary-blue-400;
 $form-input-padding: $size-3;
 $form-input-border-radius: $border-radius-1;
 
-$form-placeholder-color: $color-primary-300;
+$form-placeholder-color: $color-primary-blue-300;
 $form-placeholder-font-family: $form-input-font-family;
 $form-placeholder-font-weight: $form-input-font-weight;
 $form-placeholder-font-size: $body-font-size;
