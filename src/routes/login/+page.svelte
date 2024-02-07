@@ -39,7 +39,7 @@
 <div class="--text-center --contact-form">
     <h1 class="--heading-1 --clr-accent-400 --padding-1">FUCK</h1>
     <h3 class="--heading-3">Sign in an existing account</h3>
-    <div class="form-group --border-radius-1 --margin-inline-15 --margin-block-5 --padding-11">
+    <div class="form-group --border-radius-1 --margin-block-5">
         <button on:click={signInWithAuth} class="--button" data-button="accent">
             <i class="fa-brands fa-google" />Sign in with Google
         </button>
@@ -58,5 +58,33 @@
 
     .form-group * {
         margin: 0.3rem;
+    }
+
+    .form-group {
+        padding-inline: $size-2;
+        padding-block: $size-8;
+        margin-inline: $size-9;
+    }
+
+    @include mq(small) {
+        .form-group {
+            padding-inline: $size-5;
+            padding-block: $size-8;
+            margin-inline: $size-11;
+        }
+    }
+
+    @include mq(medium) {
+        .form-group {
+            padding: $size-8;
+            margin-inline: $size-13;
+        }
+    }
+
+    @include mq(large) {
+        .form-group {
+            padding: $size-11;
+            margin-inline: $size-15;
+        }
     }
 </style>

@@ -64,9 +64,7 @@
 <div class="--text-center --contact-form">
     <h1 class="--heading-1 --clr-accent-400 --padding-5">FUCK</h1>
     <h3 class="--heading-3">Sign up for Free Unlimited Comprehensive Knowledge</h3>
-    <div
-        class="form-group --border-radius-1 --margin-inline-15 --margin-block-4 --padding-block-7 --padding-inline-11"
-    >
+    <div class="form-group --border-radius-1 --margin-block-3 --padding-block-3">
         <button on:click={signInWithAuth} class="--button" data-button="accent">
             <i class="fa-brands fa-google" />Sign up with Google
         </button>
@@ -99,5 +97,31 @@
 
     .form-group * {
         margin: 0.3rem;
+    }
+
+    .form-group {
+        padding-inline: $size-2;
+        margin-inline: $size-9;
+    }
+
+    @include mq(small) {
+        .form-group {
+            padding-inline: $size-5;
+            margin-inline: $size-11;
+        }
+    }
+
+    @include mq(medium) {
+        .form-group {
+            padding-inline: $size-8;
+            margin-inline: $size-13;
+        }
+    }
+
+    @include mq(large) {
+        .form-group {
+            padding-inline: $size-11;
+            margin-inline: $size-15;
+        }
     }
 </style>

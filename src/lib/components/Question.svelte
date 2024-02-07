@@ -15,6 +15,7 @@
     let askWrong = false;
     let answered = false;
     let correct = false;
+    let btns = {}
     $: {
         question = getQuestion(askWrong ? wrongs[current].id : questions[current]) as Question;
         console.log(current, askWrong, question);
@@ -22,6 +23,12 @@
     $: choices = question.shuffle
         ? question.choices.toSorted(() => Math.random() - 0.5)
         : question.choices;
+
+    $: choices.forEach((element) => {
+        btns[element] = "--button --bg-accent-400";
+    });
+
+    $: console.log(btns)
 
     function validate(choice: string) {
         if (!askWrong) {
@@ -45,6 +52,7 @@
     }
 
     function clickChoice(choice: string) {
+        btns[choice] == ""
         return (_: any) => {
             validate(choice);
             answered = true;
@@ -97,8 +105,8 @@
 <p>{question.question}</p>
 
 {#if question.answerType == "objective"}
-    {#each choices as choice}
-        <button on:click={clickChoice(choice)}>{choice}</button>
+    {#each Object.keys(btns) as btn}
+        <button class={btns[btn]} on:click={clickChoice(btn)}>{btn}</button>
     {/each}
 {/if}
 
@@ -111,3 +119,16 @@
         <button on:click={nextQuestion}>Next question</button>
     </div>
 {/if}
+
+<style lang="scss">
+    @use "/src/lib/sass/abstracts/" as *;
+
+
+    .correct {
+        background-color: $color-green-600;
+    }
+
+    .wrong {
+        background-color: $color-red-600;
+    }
+</style>
