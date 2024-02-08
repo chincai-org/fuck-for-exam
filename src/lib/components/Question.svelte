@@ -47,6 +47,8 @@
 
     function clickChoice(choice: string) {
         return (_: any) => {
+            if (answered) return;
+
             validate(choice);
             lastChoice = choice;
             answered = true;
